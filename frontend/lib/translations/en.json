@@ -1,0 +1,328 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "categories": "Categories",
+    "submit": "Submit",
+    "vote": "Vote"
+  },
+  "hero": {
+    "title": "Quantum Vision Filmfest",
+    "subtitle": "Discover and vote for the most innovative films from around the world",
+    "submit_button": "Submit Your Film",
+    "vote_button": "Vote Now",
+    "scroll_down": "Scroll down",
+    "presale_info": "Presale Info"
+  },
+  "categories": {
+    "title": "Film Categories",
+    "all": "All",
+    "narrative": "Narrative",
+    "narrative_description": "Classic storytelling with a twist. Whether it's drama, thriller or sci-fi—If it moves us, it belongs here.",
+    "documentary": "Documentary",
+    "documentary_description": "Truth raw and unfiltered. Explore the world, people, and real-life stories through your lens.",
+    "animation": "Animation",
+    "animation_description": "From frame-by-frame to CGI wizardry—all animated techniques are welcome. Creativity has no limits.",
+    "experimental": "Experimental",
+    "experimental_description": "Break the rules. Play with structure, sound, or form. Surprise us with something we didn't expect.",
+    "dystopian": "Dystopian Futures",
+    "dystopian_description": "Near-future chaos, digital collapse, or quiet decline—show us the world when systems fail.",
+    "ai_identity": "AI & Identity",
+    "ai_identity_description": "What happens when machines dream, or when we become them? Stories about consciousness, code, and humanity.",
+    "no_videos": "No videos available in this category",
+    "see_details": "See Challenge Details",
+    "ai-identity": "AI & Identity"
+  },
+  "submission": {
+    "title": "Submit Your Film",
+    "subtitle": "Choose a submission package that fits your needs",
+    "entry_title": "Submit Your Entry",
+    "requirements": {
+      "video": {
+        "title": "Max. 5 Minutes",
+        "subtitle": "±15s",
+        "details": ".mp4, 720p"
+      },
+      "storyline": {
+        "title": "Storyline",
+        "subtitle": "(PDF)",
+        "details": "Max. 2 pages"
+      },
+      "script": {
+        "title": "Script Draft",
+        "subtitle": "(PDF)",
+        "details": "4 parts"
+      }
+    },
+    "upload_button": "Upload Entry",
+    "agent_only": "Only filmmakers can submit entries. Please create a filmmaker account to submit your film.",
+    "basic": {
+      "name": "Basic",
+      "description": "For independent filmmakers",
+      "feature1": "Single film submission",
+      "feature2": "Basic promotion",
+      "feature3": "Standard review process"
+    },
+    "premium": {
+      "name": "Premium",
+      "description": "For serious filmmakers",
+      "feature1": "Single film submission",
+      "feature2": "Enhanced promotion",
+      "feature3": "Priority review",
+      "feature4": "Social media feature"
+    },
+    "professional": {
+      "name": "Professional",
+      "description": "For established filmmakers",
+      "feature1": "Submit up to 3 films",
+      "feature2": "Premium promotion",
+      "feature3": "Priority review",
+      "feature4": "Featured placement",
+      "feature5": "Jury feedback"
+    },
+    "popular": "Most Popular",
+    "one_time": "one-time fee",
+    "submit_button": "Submit Now",
+    "note": "All submissions are subject to review before being published.",
+    "learn_more": "Learn more",
+    "tooltip": "Our team reviews all submissions to ensure they meet our quality standards and guidelines. This process typically takes 2-3 business days."
+  },
+  "auth": {
+    "login": "Log In",
+    "register": "Register",
+    "login_title": "Welcome Back",
+    "login_description": "Log in to your account to continue",
+    "register_title": "Create an Account",
+    "register_description": "Join Quantum Vision Filmfest",
+    "email": "Email",
+    "email_placeholder": "email@example.com",
+    "password": "Password",
+    "name": "Full Name",
+    "name_placeholder": "John Doe",
+    "confirm_password": "Confirm Password",
+    "role": "Account Type",
+    "select_role": "Select your role",
+    "role_user": "Viewer",
+    "role_agent": "Filmmaker",
+    "accept_terms": "I accept the terms and conditions",
+    "need_account": "Need an account?",
+    "have_account": "Already have an account?",
+    "login_success": "Login Successful",
+    "welcome_back": "Welcome back to Quantum Vision Filmfest",
+    "login_error": "Login Failed",
+    "invalid_credentials": "Invalid email or password",
+    "register_success": "Registration Successful",
+    "confirmation_email": "Please check your email for confirmation",
+    "register_error": "Registration Failed",
+    "email_exists": "An account with this email already exists",
+    "connecting": "Connecting...",
+    "connect_wallet": "Connect Wallet",
+    "continue": "Continue",
+    "back": "Back",
+    "forgot_password": "Forgot password?",
+    "or": "or",
+    "wallet_connected": "Wallet Connected",
+    "wallet_connected_desc": "Successfully connected to your wallet",
+    "google_login": "Google Login",
+    "google_login_desc": "Successfully logged in with Google",
+    "show_password": "Show password",
+    "hide_password": "Hide password",
+    "email_not_found": "Email not found",
+    "something_went_wrong": "Something went wrong",
+    "welcome": "Welcome to Quantum Vision Filmfest"
+  },
+  "user_menu": {
+    "profile": "Profile",
+    "upload": "Upload Video",
+    "settings": "Settings",
+    "logout": "Log Out"
+  },
+  "video": {
+    "play": "Play Video",
+    "vote": "Vote",
+    "not_found": {
+      "title": "Video Not Found",
+      "description": "The video you're looking for doesn't exist or has been removed."
+    },
+    "download_script": "Download Script",
+    "share": "Share",
+    "tabs": {
+      "details": "Details",
+      "comments": "Comments"
+    },
+    "details": {
+      "category": "Category",
+      "uploader": "Uploader",
+      "upload_date": "Upload Date"
+    },
+    "comments": {
+      "coming_soon": "Comments coming soon"
+    }
+  },
+  "votes": {
+    "dialog_title": "Buy More Votes",
+    "dialog_description": "Purchase additional votes to support your favorite films",
+    "basic": {
+      "name": "5 Votes"
+    },
+    "standard": {
+      "name": "15 Votes"
+    },
+    "premium": {
+      "name": "30 Votes"
+    },
+    "get_votes": "Get {{count}} votes",
+    "purchase_button": "Purchase",
+    "purchase_success": "Purchase Successful",
+    "votes_added": "{{count}} votes have been added to your account",
+    "purchase_error": "Purchase Failed",
+    "try_again": "Please try again later"
+  },
+  "footer": {
+    "tagline": "Celebrating innovative filmmaking from around the world",
+    "navigation": "Navigation",
+    "legal": "Legal",
+    "connect": "Connect",
+    "contact": "Contact Us",
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy",
+    "cookies": "Cookie Policy",
+    "rights": "All rights reserved"
+  },
+  "voting": {
+    "title": "Vote for Films",
+    "subtitle": "Support your favorite films and help them win awards",
+    "vote_success": "Vote Successful",
+    "vote_thank_you": "Thank you for voting! Your support means a lot to the filmmakers.",
+    "vote_error": "Vote Failed",
+    "no_videos": "No videos available for voting",
+    "view_all": "View All Videos",
+    "weekly_limit": "Weekly Vote Limit Reached",
+    "weekly_limit_desc": "You've already used your weekly vote. Purchase extra votes or wait until next week.",
+    "voting_restricted": "Voting Restricted",
+    "voting_restricted_desc": "Only regular users can vote on films. Filmmakers and agents cannot vote.",
+    "no_votes_available": "No votes available",
+    "votes_available": "{{count}} votes available",
+    "weekly_limit_reached": "Weekly limit reached",
+    "claim_reward": "Claim Reward",
+    "buy_extra_votes": "Buy Extra Votes",
+    "progress_to_level": "Progress to Level {{level}}",
+    "level_voter": "Level {{level}} Voter",
+    "points_and_votes": "{{points}} points • {{votes}} votes cast"
+  },
+  "legal": {
+    "title": "Legal Information",
+    "subtitle": "Please review our legal documents to understand our policies and your rights",
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy",
+    "cookies": "Cookie Policy",
+    "gdpr": "GDPR Compliance"
+  },
+  "about": {
+    "title": "About Quantum Vision",
+    "description1": "Quantum Vision is not just a film festival. It's a creative revolution born from the fusion of film and blockchain.",
+    "description2": "We believe stories should be free—to travel, to inspire, to change minds. That's why we built a platform where filmmakers aren't just participants—they're pioneers.",
+    "description3": "Through a future-ready DApp, creator-owned tokens, and a radically transparent system, we're redefining how films are funded, distributed, and experienced."
+  },
+  "upload": {
+    "title": "Upload Video",
+    "technical_requirements": "Technical Requirements",
+    "video_requirements": "Video: MP4 (H.264), max 500 MB, minimum 720p resolution, 16:9 aspect ratio",
+    "script_requirements": "Script: PDF format, max 5 MB",
+    "form": {
+      "title": "Title",
+      "title_placeholder": "Enter video title",
+      "description": "Description",
+      "description_placeholder": "Enter video description",
+      "category": "Category",
+      "category_placeholder": "Select a category",
+      "video_file": "Video File",
+      "script_file": "Script File",
+      "thumbnail_file": "Thumbnail (Optional)",
+      "upload_button": "Upload Video",
+      "cancel_button": "Cancel",
+      "duration": "Duration",
+      "duration_placeholder": "Enter video duration",
+      "duration_error": "Invalid duration format. Use HH:MM:SS or MM:SS",
+      "duration_description": "Enter the duration of the video in the format HH:MM:SS or MM:SS"
+    },
+    "categories": {
+      "narrative": "Narrative",
+      "documentary": "Documentary",
+      "animation": "Animation",
+      "experimental": "Experimental"
+    },
+    "validation": {
+      "title_min": "Title must be at least 2 characters",
+      "title_max": "Title must be less than 100 characters",
+      "description_max": "Description must be less than 500 characters",
+      "category_required": "Please select a category",
+      "video_required": "Video file is required",
+      "video_size": "Video file must be less than 500MB",
+      "video_format": "Video must be in MP4 format (H.264)",
+      "script_required": "Script file is required",
+      "script_size": "Script file must be less than 5MB",
+      "script_format": "Script must be in PDF format",
+      "thumbnail_format": "Thumbnail must be an image file",
+      "video_resolution": "Video must have a minimum resolution of 720p (1280x720)",
+      "video_aspect_ratio": "Video must have a 16:9 aspect ratio",
+      "video_error": "Error validating video"   
+    },
+    "success": {
+      "title": "Video Uploaded Successfully",
+      "description": "Your video has been submitted for review."
+    },
+    "error": {
+      "title": "Upload Failed",
+      "description": "There was an error uploading your video. Please try again."
+    }
+  },
+  "profile": {
+    "title": "Profile",
+    "edit_profile": "Edit Profile",
+    "upload_video": "Upload Video",
+    "my_videos": "My Videos",
+    "voted_videos": "Voted Videos",
+    "badges": "Badges & Achievements",
+    "no_videos": "You haven't uploaded any videos yet",
+    "upload_first_video": "Upload Your First Video",
+    "no_voted_videos": "You haven't voted on any videos yet",
+    "start_voting": "Start Voting",
+    "level": "Level {{level}}",
+    "points": "{{points}} points",
+    "votes_available": "Votes Available: {{count}}",
+    "total_votes": "Total Votes Cast: {{count}}",
+    "badge_super_voter": "You've reached level 5 and become a distinguished voter in our community!",
+    "badge_regular_voter": "You've consistently voted on films and reached level 3.",
+    "badge_10_votes": "You've cast 10 votes on films in our festival.",
+    "badge_50_votes": "You've cast 50 votes on films in our festival.",
+    "badge_100_votes": "You've cast 100 votes on films in our festival.",
+    "badge_newcomer": "Welcome to Quantum Vision Filmfest!",
+    "badge_early_supporter": "You were one of our early supporters.",
+    "badge_default": "You've earned this badge through your participation.",
+    "unlock_50_votes": "Cast 50 votes to unlock this badge. {{current}}/50 votes cast.",
+    "unlock_super_voter": "Reach level 5 to unlock this special badge. Currently level {{current}}/5.",
+    "edit": "Edit",
+    "delete": "Delete",
+    "video_deleted": "Video Deleted",
+    "video_deleted_desc": "Your video has been successfully deleted.",
+    "buy_votes": "Buy Votes",
+    "loading_videos": "Loading videos..."
+  },
+  "videos": {
+    "title": "Videos",
+    "subtitle": "Explore all the videos submitted to the festival",
+    "view_all": "View All Videos",
+    "no_videos": "No videos available",
+    "loading": "Loading videos...",
+    "all_videos": "All Videos"
+  },
+  "common": {
+    "cancel": "Cancel",
+    "save": "Save",
+    "previous": "Previous",
+    "next": "Next",
+    "return_home": "Return Home",
+    "back": "Back"
+  }
+} 

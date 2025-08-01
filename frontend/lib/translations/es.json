@@ -1,0 +1,328 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "categories": "Categorías",
+    "submit": "Enviar",
+    "vote": "Votar"
+  },
+  "hero": {
+    "title": "Festival de Cine de Visión Cuántica",
+    "subtitle": "Descubre y vota por las películas más innovadoras del mundo",
+    "submit_button": "Envía tu Película",
+    "vote_button": "Vota Ahora",
+    "scroll_down": "Desplázate hacia abajo",
+    "presale_info": "Información de Preventa"
+  },
+  "categories": {
+    "title": "Categorías de Películas",
+    "all": "Todas",
+    "narrative": "Narrativa",
+    "narrative_description": "Narrativa clásica con un giro. Ya sea drama, thriller o ciencia ficción—si nos conmueve, pertenece aquí.",
+    "documentary": "Documental",
+    "documentary_description": "La verdad cruda y sin filtros. Explora el mundo, las personas y las historias reales a través de tu lente.",
+    "animation": "Animación",
+    "animation_description": "Desde fotograma a fotograma hasta la magia del CGI—todas las técnicas de animación son bienvenidas. La creatividad no tiene límites.",
+    "experimental": "Experimental",
+    "experimental_description": "Rompe las reglas. Juega con la estructura, el sonido o la forma. Sorpréndenos con algo que no esperábamos.",
+    "dystopian": "Futuros Distópicos",
+    "dystopian_description": "Caos del futuro cercano, colapso digital o declive silencioso—muéstranos el mundo cuando los sistemas fallan.",
+    "ai_identity": "IA e Identidad",
+    "ai-identity": "IA e Identidad",
+    "ai_identity_description": "¿Qué sucede cuando las máquinas sueñan, o cuando nos convertimos en ellas? Historias sobre conciencia, código y humanidad.",
+    "no_videos": "No hay videos disponibles en esta categoría",
+    "see_details": "Ver Detalles del Desafío"
+  },
+  "submission": {
+    "title": "Envía tu Película",
+    "subtitle": "Elige un paquete de envío que se ajuste a tus necesidades",
+    "entry_title": "Envía tu Participación",
+    "requirements": {
+      "video": {
+        "title": "Máx. 5 Minutos",
+        "subtitle": "±15s",
+        "details": ".mp4, 720p"
+      },
+      "storyline": {
+        "title": "Historia",
+        "subtitle": "(PDF)",
+        "details": "Máx. 2 páginas"
+      },
+      "script": {
+        "title": "Borrador del Guión",
+        "subtitle": "(PDF)",
+        "details": "4 partes"
+      }
+    },
+    "upload_button": "Subir Participación",
+    "agent_only": "Solo los cineastas pueden enviar participaciones. Por favor, crea una cuenta de cineasta para enviar tu película.",
+    "basic": {
+      "name": "Básico",
+      "description": "Para cineastas independientes",
+      "feature1": "Envío de una película",
+      "feature2": "Promoción básica",
+      "feature3": "Proceso de revisión estándar"
+    },
+    "premium": {
+      "name": "Premium",
+      "description": "Para cineastas serios",
+      "feature1": "Envío de una película",
+      "feature2": "Promoción mejorada",
+      "feature3": "Revisión prioritaria",
+      "feature4": "Destacado en redes sociales"
+    },
+    "professional": {
+      "name": "Profesional",
+      "description": "Para cineastas establecidos",
+      "feature1": "Envía hasta 3 películas",
+      "feature2": "Promoción premium",
+      "feature3": "Revisión prioritaria",
+      "feature4": "Ubicación destacada",
+      "feature5": "Comentarios del jurado"
+    },
+    "popular": "Más Popular",
+    "one_time": "pago único",
+    "submit_button": "Enviar Ahora",
+    "note": "Todos los envíos están sujetos a revisión antes de ser publicados.",
+    "learn_more": "Aprende más",
+    "tooltip": "Nuestro equipo revisa todos los envíos para asegurar que cumplan con nuestros estándares de calidad y pautas. Este proceso generalmente toma 2-3 días hábiles."
+  },
+  "auth": {
+    "login": "Iniciar Sesión",
+    "register": "Registrarse",
+    "login_title": "Bienvenido de Nuevo",
+    "login_description": "Inicia sesión en tu cuenta para continuar",
+    "register_title": "Crear una Cuenta",
+    "register_description": "Únete a Quantum Vision Filmfest",
+    "email": "Correo Electrónico",
+    "email_placeholder": "example@email.com",
+    "password": "Contraseña",
+    "name": "Nombre Completo",
+    "name_placeholder": "Juan Pérez",
+    "confirm_password": "Confirmar Contraseña",
+    "role": "Tipo de Cuenta",
+    "select_role": "Selecciona tu rol",
+    "role_user": "Espectador",
+    "role_agent": "Cineasta",
+    "accept_terms": "Acepto los términos y condiciones",
+    "need_account": "¿Necesitas una cuenta?",
+    "have_account": "¿Ya tienes una cuenta?",
+    "login_success": "Inicio de Sesión Exitoso",
+    "welcome_back": "Bienvenido de nuevo a Quantum Vision Filmfest",
+    "login_error": "Error al Iniciar Sesión",
+    "invalid_credentials": "Correo electrónico o contraseña inválidos",
+    "register_success": "Registro Exitoso",
+    "confirmation_email": "Por favor revisa tu correo electrónico para confirmar",
+    "register_error": "Error en el Registro",
+    "email_exists": "Ya existe una cuenta con este correo electrónico",
+    "connecting": "Conectando...",
+    "connect_wallet": "Conectar Cartera",
+    "continue": "Continuar",
+    "back": "Atrás",
+    "forgot_password": "¿Olvidaste tu contraseña?",
+    "or": "o",
+    "wallet_connected": "Cartera Conectada",
+    "wallet_connected_desc": "Cartera conectada exitosamente",
+    "google_login": "Inicio de Sesión con Google",
+    "google_login_desc": "Inicio de sesión con Google exitoso",
+    "show_password": "Mostrar contraseña",
+    "hide_password": "Ocultar contraseña",
+    "email_not_found": "Correo electrónico no encontrado",
+    "something_went_wrong": "Algo salió mal",
+    "welcome": "Bienvenido a Quantum Vision Filmfest"
+  },
+  "user_menu": {
+    "profile": "Perfil",
+    "upload": "Subir Video",
+    "settings": "Configuración",
+    "logout": "Cerrar Sesión"
+  },
+  "video": {
+    "play": "Reproducir Video",
+    "vote": "Votar",
+    "not_found": {
+      "title": "Video No Encontrado",
+      "description": "El video que estás buscando no existe o ha sido eliminado."
+    },
+    "download_script": "Descargar Guión",
+    "share": "Compartir",
+    "tabs": {
+      "details": "Detalles",
+      "comments": "Comentarios"
+    },
+    "details": {
+      "category": "Categoría",
+      "uploader": "Cineasta",
+      "upload_date": "Fecha de Envío"
+    },
+    "comments": {
+      "coming_soon": "Comentarios próximamente"
+    }
+  },
+  "votes": {
+    "dialog_title": "Comprar Más Votos",
+    "dialog_description": "Compra votos adicionales para apoyar tus películas favoritas",
+    "basic": {
+      "name": "5 Votos"
+    },
+    "standard": {
+      "name": "15 Votos"
+    },
+    "premium": {
+      "name": "30 Votos"
+    },
+    "get_votes": "Obtener {{count}} votos",
+    "purchase_button": "Comprar",
+    "purchase_success": "Compra Exitosa",
+    "votes_added": "Se han agregado {{count}} votos a tu cuenta",
+    "purchase_error": "Error en la Compra",
+    "try_again": "Por favor intenta de nuevo más tarde"
+  },
+  "footer": {
+    "tagline": "Celebrando el cine innovador de todo el mundo",
+    "navigation": "Navegación",
+    "legal": "Legal",
+    "connect": "Conectar",
+    "contact": "Contáctanos",
+    "terms": "Términos de Servicio",
+    "privacy": "Política de Privacidad",
+    "cookies": "Política de Cookies",
+    "rights": "Todos los derechos reservados"
+  },
+  "voting": {
+    "title": "Vota por Películas",
+    "subtitle": "Apoya tus películas favoritas y ayúdalas a ganar premios",
+    "vote_success": "Voto Exitoso",
+    "vote_thank_you": "¡Gracias por votar! Tu apoyo significa mucho para los cineastas.",
+    "vote_error": "Error al Votar",
+    "no_videos": "No hay videos disponibles para votar",
+    "view_all": "Ver Todos los Videos",
+    "weekly_limit": "Límite Semanal de Votos Alcanzado",
+    "weekly_limit_desc": "Ya has usado tu voto semanal. Compra votos adicionales o espera hasta la próxima semana.",
+    "voting_restricted": "Votación Restringida",
+    "voting_restricted_desc": "Solo los usuarios regulares pueden votar en películas. Los cineastas y agentes no pueden votar.",
+    "no_votes_available": "No hay votos disponibles",
+    "votes_available": "{{count}} votos disponibles",
+    "weekly_limit_reached": "Límite semanal alcanzado",
+    "claim_reward": "Reclamar Recompensa",
+    "buy_extra_votes": "Comprar Votos Extra",
+    "progress_to_level": "Progreso al Nivel {{level}}",
+    "level_voter": "Votante Nivel {{level}}",
+    "points_and_votes": "{{points}} puntos • {{votes}} votos emitidos"
+  },
+  "legal": {
+    "title": "Información Legal",
+    "subtitle": "Por favor revisa nuestros documentos legales para entender nuestras políticas y tus derechos",
+    "terms": "Términos de Servicio",
+    "privacy": "Política de Privacidad",
+    "cookies": "Política de Cookies",
+    "gdpr": "Cumplimiento del GDPR"
+  },
+  "about": {
+    "title": "Acerca de Visión Cuántica",
+    "description1": "Visión Cuántica no es solo una competencia de cine. Es una rebelión creativa, nacida de la fusión del cine y la blockchain.",
+    "description2": "Creemos que las historias están destinadas a ser libres — a viajar, a provocar, a cambiar mentes: Por eso construimos una plataforma donde los cineastas no son solo participantes — son pioneros.",
+    "description3": "Con una DApp preparada para el futuro, tokens propiedad de los creadores y un sistema radicalmente transparente, estamos redefiniendo cómo se financian, distribuyen y experimentan las películas."
+  },
+  "upload": {
+    "title": "Subir Video",
+    "technical_requirements": "Requisitos Técnicos",
+    "video_requirements": "Video: MP4 (H.264), máximo 500 MB, resolución mínima 720p, relación de aspecto 16:9",
+    "script_requirements": "Guión: Formato PDF, máximo 5 MB",
+    "form": {
+      "title": "Título",
+      "title_placeholder": "Ingrese el título del video",
+      "description": "Descripción",
+      "description_placeholder": "Ingrese la descripción del video",
+      "category": "Categoría",
+      "category_placeholder": "Seleccione una categoría",
+      "video_file": "Archivo de Video",
+      "script_file": "Archivo de Guión",
+      "thumbnail_file": "Miniatura (Opcional)",
+      "upload_button": "Subir Video",
+      "cancel_button": "Cancelar",
+      "duration": "Duración",
+      "duration_placeholder": "Ingrese la duración del video",
+      "duration_error": "Formato de duración inválido. Use HH:MM:SS o MM:SS",
+      "duration_description": "Ingrese la duración del video en el formato HH:MM:SS o MM:SS"
+    },
+    "categories": {
+      "narrative": "Narrativo",
+      "documentary": "Documental",
+      "animation": "Animación",
+      "experimental": "Experimental"
+    },
+    "validation": {
+      "title_min": "El título debe tener al menos 2 caracteres",
+      "title_max": "El título debe tener menos de 100 caracteres",
+      "description_max": "La descripción debe tener menos de 500 caracteres",
+      "category_required": "Por favor seleccione una categoría",
+      "video_required": "Se requiere un archivo de video",
+      "video_size": "El archivo de video debe ser menor a 500MB",
+      "video_format": "El video debe estar en formato MP4 (H.264)",
+      "script_required": "Se requiere un archivo de guión",
+      "script_size": "El archivo de guión debe ser menor a 5MB",
+      "script_format": "El guión debe estar en formato PDF",
+      "thumbnail_format": "La miniatura debe ser un archivo de imagen",
+      "video_resolution": "El video debe tener una resolución mínima de 720p (1280x720)",
+      "video_aspect_ratio": "El video debe tener una relación de aspecto 16:9",
+      "video_error": "Error al validar el video"
+    },
+    "success": {
+      "title": "Video Subido Exitosamente",
+      "description": "Su video ha sido enviado para revisión."
+    },
+    "error": {
+      "title": "Error al Subir",
+      "description": "Hubo un error al subir su video. Por favor intente nuevamente."
+    }
+  },
+  "profile": {
+    "title": "Perfil",
+    "edit_profile": "Editar Perfil",
+    "upload_video": "Subir Video",
+    "my_videos": "Mis Videos",
+    "voted_videos": "Videos Votados",
+    "badges": "Insignias y Logros",
+    "no_videos": "Aún no has subido ningún video",
+    "upload_first_video": "Sube tu Primer Video",
+    "no_voted_videos": "Aún no has votado ningún video",
+    "start_voting": "Comienza a Votar",
+    "level": "Nivel {{level}}",
+    "points": "{{points}} puntos",
+    "votes_available": "Votos Disponibles: {{count}}",
+    "total_votes": "Total de Votos Emitidos: {{count}}",
+    "badge_super_voter": "¡Has alcanzado el nivel 5 y te has convertido en un votante distinguido en nuestra comunidad!",
+    "badge_regular_voter": "Has votado consistentemente en películas y alcanzado el nivel 3.",
+    "badge_10_votes": "Has emitido 10 votos en películas de nuestro festival.",
+    "badge_50_votes": "Has emitido 50 votos en películas de nuestro festival.",
+    "badge_100_votes": "Has emitido 100 votos en películas de nuestro festival.",
+    "badge_newcomer": "¡Bienvenido a Quantum Vision Filmfest!",
+    "badge_early_supporter": "Fuiste uno de nuestros primeros seguidores.",
+    "badge_default": "Has ganado esta insignia a través de tu participación.",
+    "unlock_50_votes": "Emitir 50 votos para desbloquear esta insignia. {{current}}/50 votos emitidos.",
+    "unlock_super_voter": "Alcanza el nivel 5 para desbloquear esta insignia especial. Actualmente nivel {{current}}/5.",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "video_deleted": "Video Eliminado",
+    "video_deleted_desc": "Tu video ha sido eliminado exitosamente.",
+    "buy_votes": "Comprar Votos",
+    "loading_videos": "Cargando videos..."
+  },
+  "videos": {
+    "title": "Videos",
+    "subtitle": "Explora todos los videos enviados al festival",
+    "view_all": "Ver Todos los Videos",
+    "no_videos": "No hay videos disponibles",
+    "loading": "Cargando videos...",
+    "all_videos": "Todos los Videos"
+  },
+  "common": {
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "return_home": "Volver al Inicio",
+    "back": "Volver"
+  }
+} 

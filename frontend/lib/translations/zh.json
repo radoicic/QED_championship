@@ -1,0 +1,328 @@
+{
+  "nav": {
+    "home": "首页",
+    "about": "关于",
+    "categories": "类别",
+    "submit": "提交",
+    "vote": "投票"
+  },
+  "hero": {
+    "title": "量子视觉电影节",
+    "subtitle": "发现并投票支持来自世界各地的创新电影",
+    "submit_button": "提交您的电影",
+    "vote_button": "立即投票",
+    "scroll_down": "向下滚动",
+    "presale_info": "预售信息"
+  },
+  "categories": {
+    "title": "电影类别",
+    "all": "全部",
+    "narrative": "叙事片",
+    "narrative_description": "经典叙事，现代演绎。无论是剧情片、惊悚片还是科幻片——只要打动人心，就属于这里。",
+    "documentary": "纪录片",
+    "documentary_description": "真实无滤镜。通过您的镜头探索世界、人物和真实故事。",
+    "animation": "动画片",
+    "animation_description": "从逐帧动画到CGI魔法——欢迎所有动画技术。创意无限。",
+    "experimental": "实验片",
+    "experimental_description": "打破规则。玩弄结构、声音或形式。用我们意想不到的东西给我们惊喜。",
+    "dystopian": "反乌托邦未来",
+    "dystopian_description": "近未来的混乱、数字崩溃或悄然衰落——向我们展示系统崩溃时的世界。",
+    "ai_identity": "人工智能与身份",
+    "ai_identity_description": "当机器做梦，或当我们成为机器时会发生什么？关于意识、代码和人性的故事。",
+    "no_videos": "此类别暂无视频",
+    "see_details": "查看挑战详情",
+    "ai-identity": "人工智能与身份"
+  },
+  "submission": {
+    "title": "提交您的电影",
+    "subtitle": "选择适合您需求的提交套餐",
+    "entry_title": "提交您的作品",
+    "requirements": {
+      "video": {
+        "title": "最长5分钟",
+        "subtitle": "±15秒",
+        "details": ".mp4格式，720p分辨率"
+      },
+      "storyline": {
+        "title": "故事情节",
+        "subtitle": "(PDF)",
+        "details": "最多2页"
+      },
+      "script": {
+        "title": "剧本草稿",
+        "subtitle": "(PDF)",
+        "details": "4个部分"
+      }
+    },
+    "upload_button": "上传作品",
+    "agent_only": "只有电影制作人可以提交作品。请创建电影制作人账户以提交您的电影。",
+    "basic": {
+      "name": "基础版",
+      "description": "适合独立电影制作人",
+      "feature1": "单部电影提交",
+      "feature2": "基础推广",
+      "feature3": "标准审核流程"
+    },
+    "premium": {
+      "name": "高级版",
+      "description": "适合专业电影制作人",
+      "feature1": "单部电影提交",
+      "feature2": "增强推广",
+      "feature3": "优先审核",
+      "feature4": "社交媒体展示"
+    },
+    "professional": {
+      "name": "专业版",
+      "description": "适合资深电影制作人",
+      "feature1": "最多提交3部电影",
+      "feature2": "高级推广",
+      "feature3": "优先审核",
+      "feature4": "特别展示位置",
+      "feature5": "评审反馈"
+    },
+    "popular": "最受欢迎",
+    "one_time": "一次性费用",
+    "submit_button": "立即提交",
+    "note": "所有提交的作品在发布前都需经过审核。",
+    "learn_more": "了解更多",
+    "tooltip": "我们的团队会审核所有提交的作品，确保它们符合我们的质量标准和要求。此过程通常需要2-3个工作日。"
+  },
+  "auth": {
+    "login": "登录",
+    "register": "注册",
+    "login_title": "欢迎回来",
+    "login_description": "登录您的账户继续",
+    "register_title": "创建账户",
+    "register_description": "加入量子视觉电影节",
+    "email": "电子邮箱",
+    "email_placeholder": "example@email.com",
+    "password": "密码",
+    "name": "全名",
+    "name_placeholder": "张三",
+    "confirm_password": "确认密码",
+    "role": "账户类型",
+    "select_role": "选择您的角色",
+    "role_user": "观众",
+    "role_agent": "电影制作人",
+    "accept_terms": "我接受条款和条件",
+    "need_account": "需要账户？",
+    "have_account": "已有账户？",
+    "login_success": "登录成功",
+    "welcome_back": "欢迎回到量子视觉电影节",
+    "login_error": "登录失败",
+    "invalid_credentials": "电子邮箱或密码无效",
+    "register_success": "注册成功",
+    "confirmation_email": "请查看您的邮箱进行确认",
+    "register_error": "注册失败",
+    "email_exists": "该电子邮箱已注册账户",
+    "connecting": "连接中...",
+    "connect_wallet": "连接钱包",
+    "continue": "继续",
+    "back": "返回",
+    "forgot_password": "忘记密码？",
+    "or": "或",
+    "wallet_connected": "钱包已连接",
+    "wallet_connected_desc": "钱包连接成功",
+    "google_login": "Google登录",
+    "google_login_desc": "Google登录成功",
+    "show_password": "显示密码",
+    "hide_password": "隐藏密码",
+    "email_not_found": "电子邮箱未找到",
+    "something_went_wrong": "发生错误",
+    "welcome": "欢迎来到量子视觉电影节"
+  },
+  "user_menu": {
+    "profile": "个人资料",
+    "upload": "上传视频",
+    "settings": "设置",
+    "logout": "退出登录"
+  },
+  "video": {
+    "play": "播放视频",
+    "vote": "投票",
+    "not_found": {
+      "title": "视频未找到",
+      "description": "您正在寻找的视频不存在或已被删除。"
+    },
+    "download_script": "下载剧本",
+    "share": "分享",
+    "tabs": {
+      "details": "详情",
+      "comments": "评论"
+    },
+    "details": {
+      "category": "类别",
+      "uploader": "上传者",
+      "upload_date": "上传日期"
+    },
+    "comments": {
+      "coming_soon": "评论即将到来"
+    }
+  },
+  "votes": {
+    "dialog_title": "购买更多票数",
+    "dialog_description": "购买额外票数支持您喜爱的电影",
+    "basic": {
+      "name": "5票"
+    },
+    "standard": {
+      "name": "15票"
+    },
+    "premium": {
+      "name": "30票"
+    },
+    "get_votes": "获得{{count}}票",
+    "purchase_button": "购买",
+    "purchase_success": "购买成功",
+    "votes_added": "{{count}}票已添加到您的账户",
+    "purchase_error": "购买失败",
+    "try_again": "请稍后重试"
+  },
+  "footer": {
+    "tagline": "庆祝来自世界各地的创新电影制作",
+    "navigation": "导航",
+    "legal": "法律",
+    "connect": "联系我们",
+    "contact": "联系方式",
+    "terms": "服务条款",
+    "privacy": "隐私政策",
+    "cookies": "Cookie政策",
+    "rights": "保留所有权利"
+  },
+  "voting": {
+    "title": "为电影投票",
+    "subtitle": "支持您喜爱的电影，帮助它们赢得奖项",
+    "vote_success": "投票成功",
+    "vote_thank_you": "感谢您的投票！您的支持对电影制作人意义重大。",
+    "vote_error": "投票失败",
+    "no_videos": "暂无视频可供投票",
+    "view_all": "查看所有视频",
+    "weekly_limit": "达到每周投票限制",
+    "weekly_limit_desc": "您已使用本周的投票。购买额外票数或等待下周。",
+    "voting_restricted": "投票受限",
+    "voting_restricted_desc": "只有普通用户可以投票。电影制作人和代理不能投票。",
+    "no_votes_available": "暂无可用票数",
+    "votes_available": "{{count}}票可用",
+    "weekly_limit_reached": "达到每周限制",
+    "claim_reward": "领取奖励",
+    "buy_extra_votes": "购买额外票数",
+    "progress_to_level": "升级到{{level}}级的进度",
+    "level_voter": "{{level}}级投票者",
+    "points_and_votes": "{{points}}积分 • {{votes}}票已投"
+  },
+  "legal": {
+    "title": "法律信息",
+    "subtitle": "请查看我们的法律文件以了解我们的政策和您的权利",
+    "terms": "服务条款",
+    "privacy": "隐私政策",
+    "cookies": "Cookie政策",
+    "gdpr": "GDPR合规"
+  },
+  "about": {
+    "title": "关于量子愿景",
+    "description1": "量子愿景不仅仅是一个电影节。它是电影与区块链融合中诞生的创意革命。",
+    "description2": "我们相信故事应该自由——去旅行、去启发、去改变思想。这就是为什么我们建立了一个平台，让电影制作人不仅仅是参与者，而是开拓者。",
+    "description3": "通过前瞻性的DApp、创作者拥有的代币和完全透明的系统，我们正在重新定义电影的融资、发行和体验方式。"
+  },
+  "upload": {
+    "title": "上传视频",
+    "technical_requirements": "技术要求",
+    "video_requirements": "视频：MP4 (H.264)，最大500 MB，最小分辨率720p，16:9宽高比",
+    "script_requirements": "剧本：PDF格式，最大5 MB",
+    "form": {
+      "title": "标题",
+      "title_placeholder": "输入视频标题",
+      "description": "描述",
+      "description_placeholder": "输入视频描述",
+      "category": "类别",
+      "category_placeholder": "选择类别",
+      "video_file": "视频文件",
+      "script_file": "剧本文件",
+      "thumbnail_file": "缩略图（可选）",
+      "upload_button": "上传视频",
+      "cancel_button": "取消",
+      "duration": "时长",
+      "duration_placeholder": "输入视频时长",
+      "duration_error": "无效的时长格式。使用HH:MM:SS或MM:SS",
+      "duration_description": "输入视频的时长格式为HH:MM:SS或MM:SS"
+    },
+    "categories": {
+      "narrative": "叙事片",
+      "documentary": "纪录片",
+      "animation": "动画片",
+      "experimental": "实验片"
+    },
+    "validation": {
+      "title_min": "标题至少需要2个字符",
+      "title_max": "标题不能超过100个字符",
+      "description_max": "描述不能超过500个字符",
+      "category_required": "请选择类别",
+      "video_required": "需要视频文件",
+      "video_size": "视频文件必须小于500MB",
+      "video_format": "视频必须是MP4格式(H.264)",
+      "script_required": "需要剧本文件",
+      "script_size": "剧本文件必须小于5MB",
+      "script_format": "剧本必须是PDF格式",
+      "thumbnail_format": "缩略图必须是图片文件",
+      "video_resolution": "视频必须具有720p(1280x720)的最小分辨率",
+      "video_aspect_ratio": "视频必须具有16:9的宽高比",
+      "video_error": "验证视频时出错"
+    },
+    "success": {
+      "title": "视频上传成功",
+      "description": "您的视频已提交审核。"
+    },
+    "error": {
+      "title": "上传失败",
+      "description": "上传视频时出错，请重试。"
+    }
+  },
+  "profile": {
+    "title": "个人资料",
+    "edit_profile": "编辑个人资料",
+    "upload_video": "上传视频",
+    "my_videos": "我的视频",
+    "voted_videos": "已投票视频",
+    "badges": "徽章与成就",
+    "no_videos": "您尚未上传任何视频",
+    "upload_first_video": "上传您的第一个视频",
+    "no_voted_videos": "您尚未对任何视频进行投票",
+    "start_voting": "开始投票",
+    "level": "等级 {{level}}",
+    "points": "{{points}} 积分",
+    "votes_available": "可用投票数：{{count}}",
+    "total_votes": "总投票数：{{count}}",
+    "badge_super_voter": "您已达到5级，成为我们社区中的杰出投票者！",
+    "badge_regular_voter": "您持续为电影投票并达到3级。",
+    "badge_10_votes": "您已为我们的电影节电影投出10票。",
+    "badge_50_votes": "您已为我们的电影节电影投出50票。",
+    "badge_100_votes": "您已为我们的电影节电影投出100票。",
+    "badge_newcomer": "欢迎来到量子视觉电影节！",
+    "badge_early_supporter": "您是我们最早的支持者之一。",
+    "badge_default": "您通过参与获得了这枚徽章。",
+    "unlock_50_votes": "投出50票以解锁此徽章。已投出 {{current}}/50 票。",
+    "unlock_super_voter": "达到5级以解锁此特殊徽章。当前等级 {{current}}/5。",
+    "edit": "编辑",
+    "delete": "删除",
+    "video_deleted": "视频已删除",
+    "video_deleted_desc": "您的视频已成功删除。",
+    "buy_votes": "购买投票",
+    "loading_videos": "加载视频..."
+  },
+  "videos": {
+    "title": "视频",
+    "subtitle": "探索所有提交给电影节的所有视频",
+    "view_all": "查看所有视频",
+    "no_videos": "暂无视频",
+    "loading": "加载视频...",
+    "all_videos": "所有视频"
+  },
+  "common": {
+    "cancel": "取消",
+    "save": "保存",
+    "previous": "上一页",
+    "next": "下一页",
+    "return_home": "返回首页",
+    "back": "返回"
+  }
+} 
