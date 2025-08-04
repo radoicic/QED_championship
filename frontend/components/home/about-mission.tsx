@@ -24,114 +24,46 @@ export default function AboutMission() {
   return (
     <section
       id="about"
-      className="relative w-full py-20 overflow-hidden"
-      style={{
-        background: isDarkMode
-          ? "linear-gradient(to bottom, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.9))"
-          : "linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.9))",
-      }}
+      className="relative w-full h-[1015px] overflow-hidden"
     >
       {/* Background image */}
       <div className="absolute inset-0 -z-10">
-        {/* Semi-transparent overlay for better readability */}
-        <div className="absolute inset-0 bg-black/50 z-10"></div>
-        <div className="absolute inset-0">
-          <Image 
-            src="/bg1.png" 
-            alt="About section background" 
-            fill 
-            className="object-cover"
-            priority
-          />
-        </div>
+        <Image 
+          src="/bg.png" 
+          alt="About section background" 
+          fill 
+          className="object-cover"
+          priority
+        />
       </div>
 
-      <div className="container">
-        <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center text-white">
-          {t("about.title")}
-        </h2>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ml-8">
-          {/* Left side - Text content */}
-          <div className="p-8 rounded-xl border border-slate-700/50 bg-slate-900/50 backdrop-blur-sm">
-            <div className="space-y-6">
-              <p className="text-xl leading-relaxed text-white">
-                {t("about.description1")}
-              </p>
-
-              <p className="text-xl leading-relaxed text-white">
-                {t("about.description2")}
-              </p>
-
-              <p className="text-xl leading-relaxed text-white">
-                {t("about.description3")}
-              </p>
-            </div>
-          </div>
-
-          {/* Right side - Graphic */}
-          <div className="flex flex-col items-center justify-center">
-            <div className="relative w-64 h-64 mb-6 opacity-100 scale-100">
-              {/* Film strip and blockchain graphic */}
-              <div className="absolute inset-0 rounded-xl border-2 border-purple-500/50 shadow-[0_0_20px_rgba(139,92,246,0.3)]">
-                {/* Film strip side */}
-                <div className="absolute left-0 top-0 bottom-0 w-1/2 flex flex-col justify-evenly items-center">
-                  {[1, 2, 3, 4, 5].map((i) => (
-                    <div
-                      key={i}
-                      className="w-8 h-8 rounded-md border border-purple-400/70"
-                    ></div>
-                  ))}
-                </div>
-
-                {/* Blockchain side */}
-                <div className="absolute right-0 top-0 bottom-0 w-1/2 flex flex-col justify-evenly items-center">
-                  {[1, 2, 3, 4, 5].map((i) => (
-                    <div
-                      key={i}
-                      className="w-8 h-8 rounded-md border border-orange-400/70"
-                    ></div>
-                  ))}
-                </div>
-
-                {/* Connection lines */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="relative w-32 h-32">
-                    <div className="absolute left-0 top-1/4 w-full h-[2px] bg-purple-400"></div>
-                    <div className="absolute left-0 bottom-1/4 w-full h-[2px] bg-purple-400"></div>
-                    <div className="absolute left-1/2 top-1/4 w-3 h-3 rounded-full -translate-x-1/2 -translate-y-1/2 bg-purple-400"></div>
-                    <div className="absolute left-1/2 bottom-1/4 w-3 h-3 rounded-full -translate-x-1/2 translate-y-1/2 bg-purple-400"></div>
-                    <div className="absolute left-1/2 top-1/2 w-4 h-4 rounded-full -translate-x-1/2 -translate-y-1/2 bg-purple-400"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="text-center font-bold text-2xl text-orange-300">
-              FILM
-            </div>
-            <div className="text-center font-bold text-2xl text-purple-400">
-              ✕
-            </div>
-            <div className="text-center font-bold text-2xl text-orange-300">
-              BLOCKCHAIN
-            </div>
+      <div className="container flex items-center h-[1015px] px-8">
+        <div className="text-left z-20 relative max-w-2xl">
+          <h2 className="text-5xl md:text-6xl font-bold mb-8 text-white">
+            Quantum vision filmfest
+          </h2>
+          <div className="bg-gray-900/90 backdrop-blur-lg p-10 rounded-2xl border-4 border-blue-400/50 shadow-2xl ring-2 ring-blue-300/30">
+            <p className="text-2xl text-white mb-6 leading-relaxed">
+              Quantum Vision is not just a film festival. It's a creative revolution born from the fusion of film and blockchain.
+            </p>
+            <p className="text-xl text-white/90 mb-6 leading-relaxed">
+              We believe stories should be free—to travel, to inspire, to change minds. That's why we built a platform where filmmakers aren't just participants—they're <span className="font-bold text-white">pioneers</span>.
+            </p>
+            <p className="text-xl text-white/90 leading-relaxed">
+              Through a future-ready DApp, creator-owned tokens, and a radically transparent system, we're redefining how films are funded, distributed, and experienced.
+            </p>
           </div>
         </div>
-
-        <div className="flex justify-center mt-16">
-          <Button
-            variant="ghost"
-            size="lg"
-            className="rounded-full text-white hover:bg-slate-800/50"
-            onClick={() => {
-              if (typeof document !== 'undefined') {
-                document.getElementById("categories")?.scrollIntoView({ behavior: "smooth" })
-              }
-            }}
-          >
-            <ChevronDown className="h-6 w-6" />
-          </Button>
+        
+        {/* FILM X BLOCKCHAIN Graphic */}
+        <div className="text-right z-20 relative ml-auto">
+          <div className="flex flex-col items-center space-y-4">
+            <div className="text-white text-xl font-bold">FILM</div>
+            <div className="w-1 h-16 bg-gradient-to-b from-blue-400 to-purple-400"></div>
+            <div className="w-1 h-16 bg-gradient-to-b from-purple-400 to-pink-400"></div>
+            <div className="w-1 h-16 bg-gradient-to-b from-pink-400 to-red-400"></div>
+            <div className="text-white text-xl font-bold">BLOCKCHAIN</div>
+          </div>
         </div>
       </div>
     </section>

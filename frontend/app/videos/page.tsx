@@ -9,6 +9,7 @@ import { useLanguage } from "@/lib/language-provider"
 import VideoCard from "@/components/video/video-card"
 import { getVideos, getVideosByCategory } from "@/lib/services/video-service"
 import { Video } from "@/lib/services/video-service"
+import Image from "next/image"
 
 export default function VideosPage() {
   const { t } = useLanguage()
@@ -117,8 +118,19 @@ export default function VideosPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0A0A1B] bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]">
-      <div className="container py-24">
+    <div className="relative min-h-screen bg-[#0A0A1B]">
+      {/* Background image using CSS */}
+      <div 
+        className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat opacity-60"
+        style={{
+          backgroundImage: 'url(/videos-bg.png)',
+        }}
+        onError={() => {
+          console.error('Failed to load videos background image');
+        }}
+      />
+      
+      <div className="container py-24 relative z-10">
         <div className="max-w-7xl mx-auto">
           <Tabs value={activeTab} onValueChange={handleTabChange} className="mb-12">
             <TabsList className="bg-[#0A0A1B]/50 backdrop-blur-sm border border-gray-800 p-1 mb-8">

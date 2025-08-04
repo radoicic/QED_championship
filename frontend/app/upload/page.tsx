@@ -21,6 +21,7 @@ import { Progress } from "@/components/ui/progress"
 import ClientWrapper from "@/components/client-wrapper"
 import { uploadVideo, VideoUploadData } from "@/lib/services/video-service"
 import { useSnackbar } from 'notistack'
+import Image from "next/image"
 
 const MAX_VIDEO_SIZE = 500 * 1024 * 1024 // 500MB in bytes
 const MAX_PDF_SIZE = 5 * 1024 * 1024 // 5MB in bytes
@@ -199,228 +200,245 @@ function UploadPageContent() {
   }
 
   return (
-    <div className="container py-12">
-      <div className="max-w-2xl mx-auto">
-        <h1 className="text-3xl font-bold mb-6">{t("upload.title")}</h1>
+    <div className="relative min-h-screen bg-[#0A0A1B]">
+      {/* Background image using CSS */}
+      <div 
+        className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat opacity-60"
+        style={{
+          backgroundImage: 'url(/bg.png)',
+        }}
+        onError={() => {
+          console.error('Failed to load upload background image');
+        }}
+      />
+      
+      <div className="container py-12 relative z-10">
+        <div className="max-w-2xl mx-auto">
+          <div className="text-center mb-8">
+            <h1 className="text-3xl font-bold mb-2">{t("upload.title")}</h1>
+            <p className="text-muted-foreground">{t("upload.description")}</p>
+          </div>
 
-        <Alert className="mb-6">
-          <AlertCircle className="h-4 w-4" />
-          <AlertTitle>{t("upload.technical_requirements")}</AlertTitle>
-          <AlertDescription>
-            <ul className="list-disc pl-5 mt-2 space-y-1">
-              <li>{t("upload.video_requirements")}</li>
-              <li>{t("upload.script_requirements")}</li>
-            </ul>
-          </AlertDescription>
-        </Alert>
-
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-            <FormField
-              control={form.control}
-              name="title"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{t("upload.form.title")}</FormLabel>
-                  <FormControl>
-                    <Input placeholder={t("upload.form.title_placeholder")} {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="description"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{t("upload.form.description")}</FormLabel>
-                  <FormControl>
-                    <Textarea placeholder={t("upload.form.description_placeholder")} className="resize-none" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="category"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{t("upload.form.category")}</FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <FormField
+                control={form.control}
+                name="title"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>{t("upload.form.title")}</FormLabel>
                     <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder={t("upload.form.category_placeholder")} />
-                      </SelectTrigger>
+                      <Input placeholder={t("upload.form.title_placeholder")} {...field} />
                     </FormControl>
-                    <SelectContent>
-                      <SelectItem value="narrative">{t("categories.narrative")}</SelectItem>
-                      <SelectItem value="documentary">{t("categories.documentary")}</SelectItem>
-                      <SelectItem value="experimental">{t("categories.experimental")}</SelectItem>
-                      <SelectItem value="animation">{t("categories.animation")}</SelectItem>
-                      <SelectItem value="dystopian">{t("categories.dystopian")}</SelectItem>
-                      <SelectItem value="ai-identity">{t("categories.ai_identity")}</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="duration"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{t("upload.form.duration")}</FormLabel>
-                  <FormControl>
-                    <Input 
-                      placeholder={t("upload.form.duration_placeholder")} 
-                      {...field} 
-                      // readOnly 
-                      // value={videoDuration}
-                    />
-                  </FormControl>
-                  <FormDescription>
-                    {t("upload.form.duration_description")}
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="videoFile"
-              render={({ field: { value, onChange, ...field } }) => (
-                <FormItem>
-                  <FormLabel>{t("upload.form.video_file")}</FormLabel>
-                  <FormControl>
-                    <div className="flex items-center gap-4">
-                      <Input
-                        type="file"
-                        accept="video/mp4"
-                        onChange={handleVideoChange}
-                        {...field}
-                      />
-                      {value && (
-                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                          <Video className="h-4 w-4" />
-                          <span>{value.name}</span>
-                        </div>
-                      )}
-                    </div>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="scriptFile"
-              render={({ field: { value, onChange, ...field } }) => (
-                <FormItem>
-                  <FormLabel>{t("upload.form.script_file")}</FormLabel>
-                  <FormControl>
-                    <div className="flex items-center gap-4">
-                      <Input
-                        type="file"
-                        accept="application/pdf"
-                        onChange={(e) => {
-                          const file = e.target.files?.[0]
-                          if (file) {
-                            form.setValue("scriptFile", file)
-                          }
-                        }}
-                        {...field}
-                      />
-                      {value && (
-                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                          <FileText className="h-4 w-4" />
-                          <span>{value.name}</span>
-                        </div>
-                      )}
-                    </div>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="thumbnailFile"
-              render={({ field: { value, onChange, ...field } }) => (
-                <FormItem>
-                  <FormLabel>{t("upload.form.thumbnail_file")}</FormLabel>
-                  <FormControl>
-                    <div className="flex items-center gap-4">
-                      <Input
-                        type="file"
-                        accept="image/*"
-                        onChange={(e) => {
-                          const file = e.target.files?.[0]
-                          if (file) {
-                            form.setValue("thumbnailFile", file)
-                          }
-                        }}
-                        {...field}
-                      />
-                      {value && (
-                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                          <img
-                            src={URL.createObjectURL(value)}
-                            alt="Thumbnail preview"
-                            className="h-8 w-8 object-cover rounded"
-                          />
-                        </div>
-                      )}
-                    </div>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            {isUploading && (
-              <div className="space-y-2">
-                <div className="flex items-center justify-between text-sm">
-                  <span>Uploading...</span>
-                  <span>{Math.round(uploadProgress)}%</span>
-                </div>
-                <Progress value={uploadProgress} />
-              </div>
-            )}
-
-            <div className="flex justify-end gap-4">
-              <Button
-                type="button"
-                variant="outline"
-                onClick={() => router.push("/profile")}
-                disabled={isUploading}
-              >
-                {t("upload.form.cancel_button")}
-              </Button>
-              <Button type="submit" disabled={isUploading}>
-                {isUploading ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    {t("upload.form.upload_button")}
-                  </>
-                ) : (
-                  <>
-                    <Upload className="mr-2 h-4 w-4" />
-                    {t("upload.form.upload_button")}
-                  </>
+                    <FormMessage />
+                  </FormItem>
                 )}
-              </Button>
-            </div>
-          </form>
-        </Form>
+              />
+
+              <FormField
+                control={form.control}
+                name="description"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>{t("upload.form.description")}</FormLabel>
+                    <FormControl>
+                      <Textarea 
+                        placeholder={t("upload.form.description_placeholder")} 
+                        className="min-h-[100px]" 
+                        {...field} 
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <FormField
+                  control={form.control}
+                  name="category"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{t("upload.form.category")}</FormLabel>
+                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue placeholder={t("upload.form.category_placeholder")} />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          <SelectItem value="narrative">{t("upload.categories.narrative")}</SelectItem>
+                          <SelectItem value="documentary">{t("upload.categories.documentary")}</SelectItem>
+                          <SelectItem value="experimental">{t("upload.categories.experimental")}</SelectItem>
+                          <SelectItem value="animation">{t("upload.categories.animation")}</SelectItem>
+                          <SelectItem value="dystopian">{t("upload.categories.dystopian")}</SelectItem>
+                          <SelectItem value="ai-identity">{t("upload.categories.ai_identity")}</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="duration"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{t("upload.form.duration")}</FormLabel>
+                      <FormControl>
+                        <Input 
+                          placeholder="MM:SS" 
+                          value={videoDuration}
+                          readOnly
+                          {...field} 
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+
+              <FormField
+                control={form.control}
+                name="videoFile"
+                render={({ field: { value, onChange, ...field } }) => (
+                  <FormItem>
+                    <FormLabel>{t("upload.form.video_file")}</FormLabel>
+                    <FormControl>
+                      <div className="flex items-center gap-4">
+                        <Input
+                          type="file"
+                          accept="video/mp4"
+                          onChange={(e) => {
+                            const file = e.target.files?.[0]
+                            if (file) {
+                              handleVideoChange(e)
+                              form.setValue("videoFile", file)
+                            }
+                          }}
+                          {...field}
+                        />
+                        {value && (
+                          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                            <Video className="h-4 w-4" />
+                            <span>{value.name}</span>
+                          </div>
+                        )}
+                      </div>
+                    </FormControl>
+                    <FormDescription>
+                      {t("upload.form.video_description")}
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="scriptFile"
+                render={({ field: { value, onChange, ...field } }) => (
+                  <FormItem>
+                    <FormLabel>{t("upload.form.script_file")}</FormLabel>
+                    <FormControl>
+                      <div className="flex items-center gap-4">
+                        <Input
+                          type="file"
+                          accept="application/pdf"
+                          onChange={(e) => {
+                            const file = e.target.files?.[0]
+                            if (file) {
+                              form.setValue("scriptFile", file)
+                            }
+                          }}
+                          {...field}
+                        />
+                        {value && (
+                          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                            <FileText className="h-4 w-4" />
+                            <span>{value.name}</span>
+                          </div>
+                        )}
+                      </div>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="thumbnailFile"
+                render={({ field: { value, onChange, ...field } }) => (
+                  <FormItem>
+                    <FormLabel>{t("upload.form.thumbnail_file")}</FormLabel>
+                    <FormControl>
+                      <div className="flex items-center gap-4">
+                        <Input
+                          type="file"
+                          accept="image/*"
+                          onChange={(e) => {
+                            const file = e.target.files?.[0]
+                            if (file) {
+                              form.setValue("thumbnailFile", file)
+                            }
+                          }}
+                          {...field}
+                        />
+                        {value && (
+                          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                            <img
+                              src={URL.createObjectURL(value)}
+                              alt="Thumbnail preview"
+                              className="h-8 w-8 object-cover rounded"
+                            />
+                          </div>
+                        )}
+                      </div>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              {isUploading && (
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between text-sm">
+                    <span>Uploading...</span>
+                    <span>{Math.round(uploadProgress)}%</span>
+                  </div>
+                  <Progress value={uploadProgress} />
+                </div>
+              )}
+
+              <div className="flex justify-end gap-4">
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => router.push("/profile")}
+                  disabled={isUploading}
+                >
+                  {t("upload.form.cancel_button")}
+                </Button>
+                <Button type="submit" disabled={isUploading}>
+                  {isUploading ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      {t("upload.form.upload_button")}
+                    </>
+                  ) : (
+                    <>
+                      <Upload className="mr-2 h-4 w-4" />
+                      {t("upload.form.upload_button")}
+                    </>
+                  )}
+                </Button>
+              </div>
+            </form>
+          </Form>
+        </div>
       </div>
     </div>
   )

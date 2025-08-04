@@ -148,260 +148,213 @@ export default function ProfilePage() {
   const hasSuperVoterBadge = user.badges.includes("Super Voter")
 
   return (
-    <div className="container py-12">
-      <div className="max-w-4xl mx-auto">
-        <div className="flex flex-col md:flex-row gap-8 mb-10">
-          <div className="flex-shrink-0">
-            <div className="relative h-32 w-32 rounded-full overflow-hidden border-4 border-background shadow-lg">
-              <Image
-                src={user.avatar || "/hero-bg.png"}
-                alt={`${user.name}'s profile picture`}
-                fill
-                className="object-cover"
-              />
+    <div className="relative min-h-screen bg-[#0A0A1B]">
+      {/* Background image using CSS */}
+      <div 
+        className="absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat opacity-80"
+        style={{
+          backgroundImage: 'url(/bg.png)',
+        }}
+        onError={() => {
+          console.error('Failed to load profile background image');
+        }}
+      />
+      
+      <div className="container py-12 relative z-10">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex flex-col md:flex-row gap-8 mb-10">
+            <div className="flex-shrink-0">
+              <div className="relative h-32 w-32 rounded-full overflow-hidden border-4 border-background shadow-lg">
+                <Image
+                  src={user.avatar || "/hero-bg.png"}
+                  alt={`${user.name}'s profile picture`}
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </div>
-          </div>
 
-          <div className="flex-grow">
-            <div className="flex items-center gap-3 mb-2">
-              <h1 className="text-3xl font-bold">{user.name}</h1>
-              {hasSuperVoterBadge && (
-                <Badge className="bg-primary">
-                  <Star className="h-3 w-3 mr-1" />
-                  Super Voter
-                </Badge>
-              )}
-            </div>
-            <p className="text-muted-foreground mb-4">{user.email}</p>
+            <div className="flex-grow">
+              <div className="flex items-center gap-3 mb-2">
+                <h1 className="text-3xl font-bold">{user.name}</h1>
+                {hasSuperVoterBadge && (
+                  <Badge className="bg-primary">
+                    <Star className="h-3 w-3 mr-1" />
+                    Super Voter
+                  </Badge>
+                )}
+              </div>
+              <p className="text-muted-foreground mb-4">{user.email}</p>
 
-            <div className="space-y-4 mb-4">
-              <div className="flex items-center gap-2">
-                <Trophy className="h-5 w-5 text-primary" />
-                <div className="flex-1">
-                  <div className="flex justify-between">
-                    <span className="text-sm font-medium">{t("profile.level", { level: user.level })}</span>
-                    <span className="text-sm text-muted-foreground">{t("profile.points", { points: user.points })}</span>
+              <div className="space-y-4 mb-4">
+                <div className="flex items-center gap-2">
+                  <Trophy className="h-5 w-5 text-primary" />
+                  <div className="flex-1">
+                    <div className="flex justify-between">
+                      <span className="text-sm font-medium">{t("profile.level", { level: user.level })}</span>
+                      <span className="text-sm text-muted-foreground">{t("profile.points", { points: user.points })}</span>
+                    </div>
+                    <Progress value={getProgressToNextLevel()} className="h-2 mt-1" />
                   </div>
-                  <Progress value={getProgressToNextLevel()} className="h-2 mt-1" />
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <Award className="h-5 w-5 text-primary" />
+                  <div>
+                    <span className="text-sm font-medium">{t("profile.votes_available", { count: user.votes })}</span>
+                    <p className="text-xs text-muted-foreground">{t("profile.total_votes", { count: user.votesUsed })}</p>
+                  </div>
                 </div>
               </div>
 
-              <div className="flex items-center gap-2">
-                <Award className="h-5 w-5 text-primary" />
-                <div>
-                  <span className="text-sm font-medium">{t("profile.votes_available", { count: user.votes })}</span>
-                  <p className="text-xs text-muted-foreground">{t("profile.total_votes", { count: user.votesUsed })}</p>
-                </div>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {user.badges.map((badge) => (
+                  <Badge
+                    key={badge}
+                    variant={badge === "Super Voter" ? "default" : "outline"}
+                    className={badge === "Super Voter" ? "bg-primary" : ""}
+                  >
+                    {badge === "Super Voter" && <Star className="h-3 w-3 mr-1" />}
+                    {badge}
+                  </Badge>
+                ))}
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-2 mb-4">
-              {user.badges.map((badge) => (
-                <Badge
-                  key={badge}
-                  variant={badge === "Super Voter" ? "default" : "outline"}
-                  className={badge === "Super Voter" ? "bg-primary" : ""}
-                >
-                  {badge === "Super Voter" && <Star className="h-3 w-3 mr-1" />}
-                  {badge}
-                </Badge>
-              ))}
+            <div className="flex-shrink-0 flex flex-col gap-2">
+              <Button variant="outline" onClick={() => router.push("/settings")}>
+                {t("profile.edit_profile")}
+              </Button>
+
+              {user.role === "agent" && (
+                <Button onClick={() => router.push("/upload")}>{t("profile.upload_video")}</Button>
+              )}
+
+              <Button variant="outline" className="gap-1">
+                <TrendingUp className="h-4 w-4" />
+                {t("profile.buy_votes")}
+              </Button>
             </div>
           </div>
 
-          <div className="flex-shrink-0 flex flex-col gap-2">
-            <Button variant="outline" onClick={() => router.push("/settings")}>
-              {t("profile.edit_profile")}
-            </Button>
+          <Tabs defaultValue={user.role === "agent" ? "my_videos" : "voted_videos"}>
+            <TabsList className="mb-6">
+              {user.role === "agent" && <TabsTrigger value="my_videos">{t("profile.my_videos")}</TabsTrigger>}
+              <TabsTrigger value="voted_videos">{t("profile.voted_videos")}</TabsTrigger>
+              <TabsTrigger value="badges">{t("profile.badges")}</TabsTrigger>
+            </TabsList>
 
             {user.role === "agent" && (
-              <Button onClick={() => router.push("/upload")}>{t("profile.upload_video")}</Button>
+              <TabsContent value="my_videos">
+                {isLoading ? (
+                  <div className="text-center py-12">
+                    <p className="text-muted-foreground">{t("profile.loading_videos")}</p>
+                  </div>
+                ) : userVideos.length > 0 ? (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {userVideos.map((video) => (
+                      <Card key={video.id}>
+                        {isEditing && editingVideo?.id === video.id ? (
+                          <CardContent className="p-4">
+                            <VideoEditForm
+                              video={{
+                                title: video.title,
+                                description: video.description,
+                                category: video.category,
+                                duration: video.duration
+                              }}
+                              onSave={handleUpdateVideo}
+                              onCancel={() => {
+                                setIsEditing(false)
+                                setEditingVideo(null)
+                              }}
+                            />
+                          </CardContent>
+                        ) : (
+                          <>
+                            <CardHeader className="pb-3">
+                              <div className="flex items-start justify-between">
+                                <div className="flex-1">
+                                  <CardTitle className="text-lg">{video.title}</CardTitle>
+                                  <CardDescription className="mt-1">{video.description}</CardDescription>
+                                </div>
+                                <div className="flex gap-2 ml-4">
+                                  <Button
+                                    size="sm"
+                                    variant="outline"
+                                    onClick={() => handleEditVideo(video)}
+                                  >
+                                    <Edit className="h-4 w-4" />
+                                  </Button>
+                                  <Button
+                                    size="sm"
+                                    variant="outline"
+                                    onClick={() => handleDeleteVideo(video.id)}
+                                  >
+                                    <Trash2 className="h-4 w-4" />
+                                  </Button>
+                                </div>
+                              </div>
+                            </CardHeader>
+                            <CardContent className="pt-0">
+                              <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                                <span>{video.category}</span>
+                                <span>•</span>
+                                <span>{video.duration}</span>
+                                <span>•</span>
+                                <span>{video.views} views</span>
+                              </div>
+                            </CardContent>
+                          </>
+                        )}
+                      </Card>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="text-center py-12">
+                    <p className="text-muted-foreground">{t("profile.no_videos")}</p>
+                  </div>
+                )}
+              </TabsContent>
             )}
 
-            <Button variant="outline" className="gap-1">
-              <TrendingUp className="h-4 w-4" />
-              {t("profile.buy_votes")}
-            </Button>
-          </div>
-        </div>
-
-        <Tabs defaultValue={user.role === "agent" ? "my_videos" : "voted_videos"}>
-          <TabsList className="mb-6">
-            {user.role === "agent" && <TabsTrigger value="my_videos">{t("profile.my_videos")}</TabsTrigger>}
-            <TabsTrigger value="voted_videos">{t("profile.voted_videos")}</TabsTrigger>
-            <TabsTrigger value="badges">{t("profile.badges")}</TabsTrigger>
-          </TabsList>
-
-          {user.role === "agent" && (
-            <TabsContent value="my_videos">
+            <TabsContent value="voted_videos">
               {isLoading ? (
                 <div className="text-center py-12">
-                  <p className="text-muted-foreground">{t("profile.loading_videos")}</p>
+                  <p className="text-muted-foreground">{t("profile.loading_voted_videos")}</p>
                 </div>
-              ) : userVideos.length > 0 ? (
+              ) : votedVideos.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {userVideos.map((video) => (
-                    <Card key={video.id}>
-                      {isEditing && editingVideo?.id === video.id ? (
-                        <CardContent className="p-4">
-                          <VideoEditForm
-                            video={{
-                              title: video.title,
-                              description: video.description,
-                              category: video.category
-                            }}
-                            onUpdate={handleUpdateVideo}
-                            onCancel={() => {
-                              setIsEditing(false);
-                              setEditingVideo(null);
-                            }}
-                          />
-                        </CardContent>
-                      ) : (
-                        <>
-                      <CardHeader className="p-0">
-                        <div className="relative aspect-video">
-                          <Image
-                            src={video.thumbnail || "/placeholder.svg?height=720&width=1280"}
-                            alt={video.title}
-                            fill
-                            className="object-cover rounded-t-lg"
-                          />
-                        </div>
-                      </CardHeader>
-                      <CardContent className="p-4">
-                        <CardTitle className="text-xl mb-1">{video.title}</CardTitle>
-                        <CardDescription className="line-clamp-2">{video.description}</CardDescription>
-                      </CardContent>
-                      <CardFooter className="p-4 pt-0 flex justify-between">
-                        <div className="flex items-center gap-1 text-sm text-muted-foreground">
-                          <Award className="h-4 w-4" />
-                          <span>{video.votes} votes</span>
-                        </div>
-                        <div className="flex gap-2">
-                              <Button 
-                                variant="outline" 
-                                size="sm"
-                                onClick={() => handleEditVideo(video)}
-                              >
-                            <Edit className="h-4 w-4 mr-1" />
-                                {t("profile.edit")}
-                          </Button>
-                              <Button 
-                                variant="destructive" 
-                                size="sm" 
-                                onClick={() => handleDeleteVideo(video.id)}
-                              >
-                            <Trash2 className="h-4 w-4 mr-1" />
-                                {t("profile.delete")}
-                          </Button>
-                        </div>
-                      </CardFooter>
-                        </>
-                      )}
-                    </Card>
+                  {votedVideos.map((video) => (
+                    <VideoCard key={video.id} video={video} />
                   ))}
                 </div>
               ) : (
-                <div className="text-center py-12 bg-muted/30 rounded-lg">
-                  <p className="text-muted-foreground mb-4">{t("profile.no_videos")}</p>
-                  <Button onClick={() => router.push("/upload")}>{t("profile.upload_first_video")}</Button>
+                <div className="text-center py-12">
+                  <p className="text-muted-foreground">{t("profile.no_voted_videos")}</p>
                 </div>
               )}
             </TabsContent>
-          )}
 
-          <TabsContent value="voted_videos">
-            {votedVideos.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {votedVideos.map((video: Video) => (
-                  <VideoCard key={video.id} video={video} />
-                ))}
-              </div>
-            ) : (
-              <div className="text-center py-12 bg-muted/30 rounded-lg">
-                <p className="text-muted-foreground">{t("profile.no_voted_videos")}</p>
-              </div>
-            )}
-          </TabsContent>
-
-          <TabsContent value="badges">
-            <div className="bg-muted/30 rounded-lg p-6">
-              <h2 className="text-xl font-bold mb-6">{t("profile.badges")}</h2>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <TabsContent value="badges">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {user.badges.map((badge) => (
-                  <Card key={badge} className={badge === "Super Voter" ? "border-primary" : ""}>
-                    <CardHeader className="pb-2">
-                      <div className="flex items-center gap-2">
-                        {badge === "Super Voter" ? (
-                          <Star className="h-5 w-5 text-primary" />
-                        ) : badge.includes("Votes") ? (
-                          <Award className="h-5 w-5 text-primary" />
-                        ) : (
-                          <Trophy className="h-5 w-5 text-primary" />
-                        )}
-                        <CardTitle className="text-lg">{badge}</CardTitle>
-                      </div>
+                  <Card key={badge}>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <Star className="h-5 w-5 text-primary" />
+                        {badge}
+                      </CardTitle>
+                      <CardDescription>
+                        {t(`profile.badges.${badge.toLowerCase().replace(' ', '_')}_description`)}
+                      </CardDescription>
                     </CardHeader>
-                    <CardContent>
-                      <p className="text-sm text-muted-foreground">
-                        {badge === "Super Voter"
-                          ? t("profile.badge_super_voter")
-                          : badge === "Regular Voter"
-                            ? t("profile.badge_regular_voter")
-                            : badge === "10 Votes"
-                              ? t("profile.badge_10_votes")
-                              : badge === "50 Votes"
-                                ? t("profile.badge_50_votes")
-                                : badge === "100 Votes"
-                                  ? t("profile.badge_100_votes")
-                                  : badge === "Newcomer"
-                                    ? t("profile.badge_newcomer")
-                                    : badge === "Early Supporter"
-                                      ? t("profile.badge_early_supporter")
-                                      : t("profile.badge_default")}
-                      </p>
-                    </CardContent>
                   </Card>
                 ))}
-
-                {/* Locked badges */}
-                {!user.badges.includes("50 Votes") && (
-                  <Card className="border-dashed opacity-70">
-                    <CardHeader className="pb-2">
-                      <div className="flex items-center gap-2">
-                        <Award className="h-5 w-5 text-muted-foreground" />
-                        <CardTitle className="text-lg text-muted-foreground">50 Votes</CardTitle>
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-sm text-muted-foreground">
-                        {t("profile.unlock_50_votes", { current: user.votesUsed })}
-                      </p>
-                    </CardContent>
-                  </Card>
-                )}
-
-                {!user.badges.includes("Super Voter") && (
-                  <Card className="border-dashed opacity-70">
-                    <CardHeader className="pb-2">
-                      <div className="flex items-center gap-2">
-                        <Star className="h-5 w-5 text-muted-foreground" />
-                        <CardTitle className="text-lg text-muted-foreground">Super Voter</CardTitle>
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-sm text-muted-foreground">
-                        {t("profile.unlock_super_voter", { current: user.level })}
-                      </p>
-                    </CardContent>
-                  </Card>
-                )}
               </div>
-            </div>
-          </TabsContent>
-        </Tabs>
+            </TabsContent>
+          </Tabs>
+        </div>
       </div>
     </div>
   )

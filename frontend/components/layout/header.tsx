@@ -1,179 +1,282 @@
-"use client"
+"use client";
 
-import type React from "react"
-
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { usePathname, useRouter } from "next/navigation"
-import { Film, Menu, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { useAuth } from "@/lib/auth-provider"
-import { useLanguage } from "@/lib/language-provider"
-import LanguageSwitcher from "@/components/layout/language-switcher"
-import AuthButtons from "@/components/auth/auth-buttons"
-import { ThemeToggle } from "@/components/theme-toggle"
-import Image from "next/image"
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/lib/language-provider";
+import { useTheme } from "next-themes";
+import { cn } from "@/lib/utils";
+import { Menu, X, Wallet, User, ChevronDown } from "lucide-react";
+import { useSession, signOut } from "next-auth/react";
+import UserMenu from "@/components/auth/user-menu";
+import LoginDialog from "@/components/auth/login-dialog";
+import RegisterDialog from "@/components/auth/register-dialog";
+import LanguageSwitcher from "@/components/layout/language-switcher";
+import Image from "next/image";
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const pathname = usePathname()
-  const router = useRouter()
-  const { user } = useAuth()
-  const { t } = useLanguage()
+  const { t } = useLanguage();
+  const { theme, resolvedTheme } = useTheme();
+  const { data: session } = useSession();
+  const [mounted, setMounted] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isRegisterOpen, setIsRegisterOpen] = useState(false);
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
-  const closeMenu = () => setIsMenuOpen(false)
-
-  const navItems = [
-    { name: t("nav.home"), href: "/" },
-    { name: t("nav.about"), href: "/#about" },
-    { name: t("nav.categories"), href: "/#categories" },
-    { name: t("nav.submit"), href: "/#submit" },
-    { name: t("nav.vote"), href: "/#vote" },
-  ]
-
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault()
-    closeMenu()
-
-    // If we're not on the home page, navigate to home first
-    if (pathname !== "/") {
-      router.push(href)
-      return
-    }
-
-    // Extract the section ID from the href
-    const sectionId = href.includes("#") ? href.split("#")[1] : null
-
-    if (sectionId && typeof document !== 'undefined') {
-      // Find the section element and scroll to it
-      const section = document.getElementById(sectionId)
-      if (section) {
-        section.scrollIntoView({ behavior: "smooth" })
-      }
-    } else if (typeof window !== 'undefined') {
-      // If it's the home link, scroll to top
-      window.scrollTo({ top: 0, behavior: "smooth" })
-    }
-  }
-
-  // Add scroll event listener to highlight active section
-  const [activeSection, setActiveSection] = useState("")
-
+  // Avoid hydration mismatch
   useEffect(() => {
-    if (typeof window === 'undefined' || typeof document === 'undefined') return;
-    
-    const handleScroll = () => {
-      if (pathname !== "/") return
+    setMounted(true);
+  }, []);
 
-      const sections = ["about", "categories", "submit", "vote"]
-      const scrollPosition = window.scrollY + 100 // Offset for header
+  // Transform session user to match UserMenu props
+  const user = session?.user ? {
+    id: "1", // Default ID since session.user doesn't have id
+    name: session.user.name || "User",
+    email: session.user.email || "user@example.com",
+    role: "user" as const, // Default role since session.user doesn't have role
+    avatar: session.user.image || undefined
+  } : null;
 
-      for (const section of sections) {
-        const element = document.getElementById(section)
-        if (element) {
-          const { offsetTop, offsetHeight } = element
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section)
-            return
-          }
-        }
-      }
+  // Don't render until mounted to prevent hydration mismatch
+  if (!mounted) {
+    return (
+      <header className="sticky top-0 z-50 bg-black border-b border-gray-800">
+        <div className="container mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            {/* Logo */}
+            <Link href="/" className="flex items-center space-x-4 group">
+              <div className="relative w-12 h-12 flex items-center justify-center">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-purple-600 rounded-lg transform rotate-45"></div>
+                <div className="relative z-10 text-white font-bold text-2xl">
+                  Q
+                </div>
+              </div>
+              <div className="flex flex-col space-y-1">
+                <span className="text-white font-bold text-xl quantum-text-glow">
+                  Quantum
+                </span>
+                <span className="text-blue-300 text-sm font-light tracking-wider">
+                  REELS & CRYPTO GALLERY
+                </span>
+              </div>
+            </Link>
 
-      // If no section is active, we're at the top (home)
-      setActiveSection("")
-    }
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex items-center space-x-8">
+              <Link 
+                href="/" 
+                className="text-white hover:text-blue-300 transition-colors duration-200 text-base font-medium"
+              >
+                {t("nav.home")}
+              </Link>
+              <Link 
+                href="/about" 
+                className="text-white hover:text-blue-300 transition-colors duration-200 text-base font-medium"
+              >
+                About
+              </Link>
+              <Link 
+                href="/categories" 
+                className="text-white hover:text-blue-300 transition-colors duration-200 text-base font-medium"
+              >
+                Categories
+              </Link>
+              <Link 
+                href="/upload" 
+                className="text-white hover:text-blue-300 transition-colors duration-200 text-base font-medium"
+              >
+                {t("nav.submit")}
+              </Link>
+              <Link 
+                href="/videos" 
+                className="text-white hover:text-blue-300 transition-colors duration-200 text-base font-medium"
+              >
+                {t("nav.vote")}
+              </Link>
+            </nav>
 
-    window.addEventListener("scroll", handleScroll)
-    handleScroll() // Call once on mount
+            {/* Right side - Auth and Language */}
+            <div className="flex items-center space-x-6">
+              {/* Auth Buttons */}
+              <div className="flex items-center space-x-6">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="text-white hover:text-blue-300 hover:bg-transparent text-base font-medium px-0"
+                >
+                  {t("auth.login")}
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="text-white hover:text-blue-300 hover:bg-transparent text-base font-medium px-0"
+                >
+                  {t("auth.register")}
+                </Button>
+              </div>
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll)
-    }
-  }, [pathname])
+              {/* Language Switcher */}
+              <LanguageSwitcher />
 
-  const scrollToSection = (section: string) => {
-    if (typeof document !== 'undefined') {
-      const element = document.getElementById(section)
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" })
-      }
-    }
+              {/* Mobile Menu Button */}
+              <Button
+                variant="ghost"
+                size="sm"
+                className="md:hidden text-white hover:text-blue-300"
+              >
+                <Menu className="w-6 h-6" />
+              </Button>
+            </div>
+          </div>
+        </div>
+      </header>
+    );
   }
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between">
-        <div className="flex items-center gap-2">
-          <Link href="/" className="flex items-center gap-2" onClick={(e) => handleNavClick(e, "/")}>
-            <Image 
-              src="https://presale-53df2.web.app/images/logo1.png" 
-              alt="Quantum Vision Logo" 
-              width={24} 
-              height={24} 
-              style={{ width: 'auto', height: '180px' }}
-            />
-            {/* <span className="font-bold">Quantum Vision</span> */}
+    <header className="sticky top-0 z-50 bg-black border-b border-gray-800">
+      <div className="container mx-auto px-6 py-4">
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <Link href="/" className="flex items-center space-x-4 group">
+            <div className="relative w-12 h-12 flex items-center justify-center">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-purple-600 rounded-lg transform rotate-45"></div>
+              <div className="relative z-10 text-white font-bold text-2xl">
+                Q
+              </div>
+            </div>
+            <div className="flex flex-col space-y-1">
+              <span className="text-white font-bold text-xl quantum-text-glow">
+                Quantum
+              </span>
+              <span className="text-blue-300 text-sm font-light tracking-wider">
+                REELS & CRYPTO GALLERY
+              </span>
+            </div>
           </Link>
-        </div>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-6">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={(e) => handleNavClick(e, item.href)}
-              className={`text-sm font-medium transition-colors hover:text-primary ${
-                pathname === item.href || (item.href.includes("#") && activeSection === item.href.split("#")[1])
-                  ? "text-primary"
-                  : "text-muted-foreground"
-              }`}
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-8">
+            <Link 
+              href="/" 
+              className="text-white hover:text-blue-300 transition-colors duration-200 text-base font-medium"
             >
-              {item.name}
+              {t("nav.home")}
             </Link>
-          ))}
-          {/* <ThemeToggle /> */}
-          <LanguageSwitcher />
-          <AuthButtons />
-        </nav>
+            <Link 
+              href="/about" 
+              className="text-white hover:text-blue-300 transition-colors duration-200 text-base font-medium"
+            >
+              About
+            </Link>
+            <Link 
+              href="/categories" 
+              className="text-white hover:text-blue-300 transition-colors duration-200 text-base font-medium"
+            >
+              Categories
+            </Link>
+            <Link 
+              href="/upload" 
+              className="text-white hover:text-blue-300 transition-colors duration-200 text-base font-medium"
+            >
+              {t("nav.submit")}
+            </Link>
+            <Link 
+              href="/videos" 
+              className="text-white hover:text-blue-300 transition-colors duration-200 text-base font-medium"
+            >
+              {t("nav.vote")}
+            </Link>
+          </nav>
 
-        {/* Mobile Menu Button */}
-        <div className="flex items-center gap-2 md:hidden">
-          {/* <ThemeToggle /> */}
-          <Button variant="ghost" size="icon" onClick={toggleMenu} aria-label="Toggle menu">
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </Button>
+          {/* Right side - Auth and Language */}
+          <div className="flex items-center space-x-6">
+            {/* Auth Buttons */}
+            {session ? (
+              <UserMenu user={user} />
+            ) : (
+              <div className="flex items-center space-x-6">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setIsLoginOpen(true)}
+                  className="text-white hover:text-blue-300 hover:bg-transparent text-base font-medium px-0"
+                >
+                  {t("auth.login")}
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setIsRegisterOpen(true)}
+                  className="text-white hover:text-blue-300 hover:bg-transparent text-base font-medium px-0"
+                >
+                  {t("auth.register")}
+                </Button>
+              </div>
+            )}
+
+            {/* Language Switcher */}
+            <LanguageSwitcher />
+
+            {/* Mobile Menu Button */}
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden text-white hover:text-blue-300"
+            >
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </Button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="absolute top-16 left-0 right-0 bg-background border-b md:hidden">
-            <nav className="container flex flex-col py-4">
-              {navItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={(e) => handleNavClick(e, item.href)}
-                  className={`py-2 text-sm font-medium transition-colors hover:text-primary ${
-                    pathname === item.href || (item.href.includes("#") && activeSection === item.href.split("#")[1])
-                      ? "text-primary"
-                      : "text-muted-foreground"
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              ))}
-              <div className="py-2">
-                <LanguageSwitcher />
-              </div>
-              <div className="py-2">
-                <AuthButtons />
-              </div>
+          <div className="md:hidden mt-4 pb-4 border-t border-gray-800">
+            <nav className="flex flex-col space-y-4 pt-4">
+              <Link 
+                href="/" 
+                className="text-white hover:text-blue-300 transition-colors duration-200 text-base font-medium"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {t("nav.home")}
+              </Link>
+              <Link 
+                href="/about" 
+                className="text-white hover:text-blue-300 transition-colors duration-200 text-base font-medium"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                About
+              </Link>
+              <Link 
+                href="/categories" 
+                className="text-white hover:text-blue-300 transition-colors duration-200 text-base font-medium"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Categories
+              </Link>
+              <Link 
+                href="/upload" 
+                className="text-white hover:text-blue-300 transition-colors duration-200 text-base font-medium"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {t("nav.submit")}
+              </Link>
+              <Link 
+                href="/videos" 
+                className="text-white hover:text-blue-300 transition-colors duration-200 text-base font-medium"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {t("nav.vote")}
+              </Link>
             </nav>
           </div>
         )}
       </div>
+
+      {/* Auth Dialogs */}
+      <LoginDialog open={isLoginOpen} onOpenChange={setIsLoginOpen} />
+      <RegisterDialog open={isRegisterOpen} onOpenChange={setIsRegisterOpen} />
     </header>
-  )
+  );
 }

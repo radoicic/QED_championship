@@ -1,174 +1,117 @@
-"use client"
+"use client";
 
-import type React from "react"
+import { useState } from "react";
+import { useLanguage } from "@/lib/language-provider";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { MessageSquare, FileText, Beaker, Circle, AlertTriangle, Cpu } from "lucide-react";
 
-import { useEffect, useState } from "react"
-import { MessageSquare, FileText, FlaskRoundIcon as Flask, Gamepad2, AlertTriangle, Cpu } from "lucide-react"
-import { useTheme } from "next-themes"
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { useLanguage } from "@/lib/language-provider"
-import Image from "next/image"
-import Link from "next/link"
-
-interface CategoryCardProps {
-  icon: React.ReactNode
-  title: string
-  description: string
-  color: string
-  isDarkMode: boolean
-  slug: string
-}
-
-function CategoryCard({ icon, title, description, color, isDarkMode, slug }: CategoryCardProps) {
-  const { t } = useLanguage()
-  
-  return (
-    <div
-      className={cn(
-        "relative rounded-xl p-8 transition-all duration-300 h-full flex flex-col",
-        "bg-slate-900/70 backdrop-blur-md hover:bg-slate-900/90",
-        "hover:scale-[1.02] hover:shadow-2xl group"
-      )}
-      style={{
-        boxShadow: `0 0 20px rgba(var(--${color}-rgb), 0.2)`,
-        border: `1px solid rgb(var(--${color}-rgb), 0.5)`,
-      }}
-    >
-      <div className={`text-${color}-500 mb-6 text-opacity-90 group-hover:text-opacity-100 transition-all duration-300 transform group-hover:scale-110`}>
-        {icon}
-      </div>
-      <h3 className="text-2xl font-bold mb-3 text-white">{title}</h3>
-      <p className="mb-6 flex-grow text-slate-300">{description}</p>
-      <Link href={`/videos?category=${slug}`} passHref>
-      <Button
-        variant="link"
-        className={`text-${color}-400 p-0 h-auto font-medium hover:text-${color}-300 hover:translate-x-1 transition-transform duration-300 hover:no-underline`}
-      >
-        {t("categories.see_details")}
-      </Button>
-      </Link>
-      
-      {/* Glowing corner effect */}
-      <div className={`absolute top-0 right-0 w-20 h-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-bl from-${color}-500/30 to-transparent rounded-tr-xl`}></div>
-      
-      {/* Glowing border on hover */}
-      <div className={`absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}
-        style={{
-          boxShadow: `0 0 15px 2px rgb(var(--${color}-rgb), 0.4)`,
-          border: `1px solid rgb(var(--${color}-rgb), 0.8)`,
-        }}
-      ></div>
-    </div>
-  )
-}
+const categories = [
+  {
+    id: "narrative",
+    icon: MessageSquare,
+    title: "Narrative",
+    description: "Classic storytelling with a twist. Whether it's drama, thriller or sci-fi—If it moves us, it belongs here.",
+    color: "blue",
+    glow: "category-icon-neon-blue"
+  },
+  {
+    id: "documentary",
+    icon: FileText,
+    title: "Documentary",
+    description: "Truth raw and unfiltered. Explore the world, people, and real-life stories through your lens.",
+    color: "yellow",
+    glow: "category-icon-neon-yellow"
+  },
+  {
+    id: "experimental",
+    icon: Beaker,
+    title: "Experimental",
+    description: "Break the rules. Play with structure, sound, or form. Surprise us with something we didn't expect.",
+    color: "purple",
+    glow: "category-icon-neon-purple"
+  },
+  {
+    id: "animation",
+    icon: Circle,
+    title: "Animation",
+    description: "From frame-by-frame to CGI wizardry—all animated techniques are welcome. Creativity has no limits.",
+    color: "pink",
+    glow: "category-icon-neon-pink"
+  },
+  {
+    id: "dystopian",
+    icon: AlertTriangle,
+    title: "Dystopian Futures",
+    description: "Near-future chaos, digital collapse, or quiet decline—show us the world when systems fail.",
+    color: "red",
+    glow: "category-icon-neon-red"
+  },
+  {
+    id: "ai-identity",
+    icon: Cpu,
+    title: "AI & Identity",
+    description: "What happens when machines dream, or when we become them? Stories about consciousness, code, and humanity.",
+    color: "green",
+    glow: "category-icon-neon-green"
+  }
+];
 
 export default function CategoryOverview() {
-  const { t } = useLanguage()
-  const { resolvedTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
-
-  // Avoid hydration mismatch
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  // Determine if we're in dark mode
-  const isDarkMode = mounted && resolvedTheme === "dark"
-
-  // Define CSS variables for colors - only on client side
-  useEffect(() => {
-    if (typeof document !== 'undefined') {
-      document.documentElement.style.setProperty("--blue-rgb", "59, 130, 246")
-      document.documentElement.style.setProperty("--orange-rgb", "249, 115, 22")
-      document.documentElement.style.setProperty("--purple-rgb", "139, 92, 246")
-      document.documentElement.style.setProperty("--yellow-rgb", "234, 179, 8")
-      document.documentElement.style.setProperty("--red-rgb", "239, 68, 68")
-      document.documentElement.style.setProperty("--green-rgb", "34, 197, 94")
-    }
-  }, [])
-
-  const categories = [
-    {
-      icon: <MessageSquare className="h-10 w-10" />,
-      title: t("categories.narrative"),
-      description: t("categories.narrative_description"),
-      color: "blue",
-      slug: "narrative"
-    },
-    {
-      icon: <FileText className="h-10 w-10" />,
-      title: t("categories.documentary"),
-      description: t("categories.documentary_description"),
-      color: "orange",
-      slug: "documentary"
-    },
-    {
-      icon: <Flask className="h-10 w-10" />,
-      title: t("categories.experimental"),
-      description: t("categories.experimental_description"),
-      color: "purple",
-      slug: "experimental"
-    },
-    {
-      icon: <Gamepad2 className="h-10 w-10" />,
-      title: t("categories.animation"),
-      description: t("categories.animation_description"),
-      color: "yellow",
-      slug: "animation"
-    },
-    {
-      icon: <AlertTriangle className="h-10 w-10" />,
-      title: t("categories.dystopian"),
-      description: t("categories.dystopian_description"),
-      color: "red",
-      slug: "dystopian"
-    },
-    {
-      icon: <Cpu className="h-10 w-10" />,
-      title: t("categories.ai_identity"),
-      description: t("categories.ai_identity_description"),
-      color: "green",
-      slug: "ai-identity"
-    },
-  ]
+  const { t } = useLanguage();
 
   return (
-    <section id="categories" className="relative w-full py-24 overflow-hidden">
-      {/* Background image */}
-      <div className="absolute inset-0 -z-10">
-        {/* Semi-transparent overlay for better readability */}
-        {/* <div className="absolute inset-0 bg-black/70 z-10"></div> */}
-        <div className="absolute inset-0">
-          <Image 
-            src="/bg1.png" 
-            alt="Categories background" 
-            fill 
-            className="object-cover"
-            priority
-          />
+    <div className="py-32">
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="text-center mb-20">
+          <h2 className="text-6xl md:text-7xl font-bold mb-8 quantum-text-glow text-white">
+            Film Categories
+          </h2>
+        </div>
+
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {categories.map((category) => {
+              const IconComponent = category.icon;
+              return (
+                <div key={category.id} className="flex items-start space-x-4">
+                  <div className="flex-shrink-0">
+                    <div className={`p-4 rounded-full border border-${category.color}-500/30 ${category.glow}`}>
+                      <IconComponent className={`w-8 h-8 text-${category.color}-400`} />
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-white mb-3">
+                      {category.title}
+                    </h3>
+                    <p className="text-slate-300 mb-4 text-sm leading-relaxed">
+                      {category.description}
+                    </p>
+                    <Button 
+                      variant="ghost" 
+                      size="sm"
+                      className={`text-${category.color}-300 hover:text-${category.color}-200 font-medium`}
+                    >
+                      SEE CHALLENGE DETAILS
+                    </Button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
-
-      <div className="container">
-        <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center text-white">
-          {t("categories.title")}
-        </h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mx-8">
-          {categories.map((category, index) => (
-            <CategoryCard
-              key={index}
-              icon={category.icon}
-              title={category.title}
-              description={category.description}
-              color={category.color}
-              isDarkMode={isDarkMode}
-              slug={category.slug}
-            />
-          ))}
-        </div>
-      </div>
-    </section>
-  )
+    </div>
+  );
 }
+
+// Add wavy pattern CSS
+const wavyPattern = `
+  .wavy-pattern {
+    background: 
+      radial-gradient(circle at 25% 25%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(255, 119, 198, 0.1) 0%, transparent 50%),
+      linear-gradient(45deg, transparent 30%, rgba(120, 219, 255, 0.05) 50%, transparent 70%);
+    background-size: 100px 100px, 150px 150px, 200px 200px;
+  }
+`;
