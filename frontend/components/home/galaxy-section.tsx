@@ -59,62 +59,37 @@ export default function GalaxySection() {
                 —they're <span className="font-bold text-xl">pioneers.</span>
               </p>
             </div>
-
-            {/* Third Text Block */}
-            <div className="text-lg md:text-xl text-white/90 leading-relaxed text-left">
-              <p className="mb-4">
-                Through a future-ready DApp, creator-owned tokens, and a radically
-              </p>
-              <p className="mb-4">
-                transparent system, we're redefining how films are funded, distributed,
-              </p>
-              <p>and experienced.</p>
-            </div>
           </div>
         </div>
 
-        {/* Wave Pulse Pattern at Bottom */}
-        <div className="flex space-x-2 mt-16">
-          {Array.from({ length: 50 }).map((_, i) => (
-            <div
-              key={i}
-              className="w-2 h-8 bg-purple-400 rounded-full animate-pulse shadow-[0_0_15px_rgba(147,51,234,0.6)]"
-              style={{
-                animationDelay: `${i * 0.1}s`,
-                animationDuration: "2s",
-              }}
-            />
-          ))}
-        </div>
-
         {/* Interactive Triangle Buttons */}
-        <div className="flex justify-center space-x-32 mt-20">
+        <div className="flex justify-center space-x-48" style={{ marginTop: '700px' }}>
           {/* Submit Your Film Button */}
           <div className="relative group cursor-pointer transform rotate-45">
-            <div className="w-32 h-32 bg-transparent border-2 border-cyan-800 transform rotate-45 flex items-center justify-center shadow-[0_0_20px_rgba(34,211,238,0.6)] hover:shadow-[0_0_30px_rgba(34,211,238,0.8)] transition-all duration-300" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}>
+            <div className="w-40 h-40 bg-transparent border-4 border-cyan-300 transform rotate-45 flex items-center justify-center shadow-[0_0_20px_rgba(34,211,238,0.8)] hover:shadow-[0_0_40px_rgba(34,211,238,1)] hover:border-cyan-200 transition-all duration-300 hover:scale-110" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}>
               <div className="transform -rotate-90 text-center">
-                <p className="text-white text-sm font-bold">Submit</p>
-                <p className="text-white text-sm font-bold">Your Film</p>
+                <p className="text-white text-sm font-bold group-hover:text-cyan-300 transition-colors duration-300">Submit</p>
+                <p className="text-white text-sm font-bold group-hover:text-cyan-300 transition-colors duration-300">Your Film</p>
               </div>
             </div>
           </div>
 
           {/* Connect Wallet Button */}
           <div className="relative group cursor-pointer transform rotate-45">
-            <div className="w-32 h-32 bg-black border-2 border-blue-800 transform rotate-45 flex items-center justify-center shadow-[0_0_20px_rgba(59,130,246,0.6)] hover:shadow-[0_0_30px_rgba(59,130,246,0.8)] transition-all duration-300" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}>
+            <div className="w-40 h-40 bg-black border-2 border-blue-400 transform rotate-45 flex items-center justify-center shadow-[0_0_20px_rgba(59,130,246,0.8)] hover:shadow-[0_0_40px_rgba(59,130,246,1)] hover:border-blue-300 transition-all duration-300 hover:scale-110" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}>
               <div className="transform -rotate-90 text-center">
-                <p className="text-white text-sm font-bold">Connect</p>
-                <p className="text-white text-sm font-bold">Wallet</p>
+                <p className="text-white text-sm font-bold group-hover:text-blue-300 transition-colors duration-300">Connect</p>
+                <p className="text-white text-sm font-bold group-hover:text-blue-300 transition-colors duration-300">Wallet</p>
               </div>
             </div>
           </div>
 
           {/* Presale Info Button */}
           <div className="relative group cursor-pointer transform rotate-45">
-            <div className="w-32 h-32 bg-transparent border-2 border-pink-800 transform rotate-45 flex items-center justify-center shadow-[0_0_20px_rgba(236,72,153,0.6)] hover:shadow-[0_0_30px_rgba(236,72,153,0.8)] transition-all duration-300" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}>
+            <div className="w-40 h-40 bg-transparent border-4 border-pink-300 transform rotate-45 flex items-center justify-center shadow-[0_0_20px_rgba(236,72,153,0.8)] hover:shadow-[0_0_40px_rgba(236,72,153,1)] hover:border-pink-200 transition-all duration-300 hover:scale-110" style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}>
               <div className="transform -rotate-90 text-center">
-                <p className="text-white text-sm font-bold">Presale</p>
-                <p className="text-white text-sm font-bold">Info</p>
+                <p className="text-white text-sm font-bold group-hover:text-pink-300 transition-colors duration-300">Presale</p>
+                <p className="text-white text-sm font-bold group-hover:text-pink-300 transition-colors duration-300">Info</p>
               </div>
             </div>
           </div>

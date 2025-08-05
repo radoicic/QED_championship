@@ -26,16 +26,7 @@ export default function AboutMission() {
       id="about"
       className="relative w-full h-[1015px] overflow-hidden"
     >
-      {/* Background image */}
-      <div className="absolute inset-0 -z-10">
-        <Image 
-          src="/bg.png" 
-          alt="About section background" 
-          fill 
-          className="object-cover"
-          priority
-        />
-      </div>
+
 
       <div className="container flex items-center h-[1015px] px-8">
         <div className="text-left z-20 relative max-w-2xl">

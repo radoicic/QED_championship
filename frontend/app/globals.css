@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Hide Next.js development indicator */
+#__next-build-watcher {
+  display: none !important;
+}
+
+/* Alternative selectors for Next.js dev indicator */
+[data-nextjs-data-router-tree] {
+  display: none !important;
+}
+
+/* Hide any development indicators */
+[data-nextjs-dev-indicator] {
+  display: none !important;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -376,4 +391,12 @@ html {
 .category-icon-neon-pink {
   color: rgb(236, 72, 153);
   animation: neon-glow 2s ease-in-out infinite, neon-pulse 3s ease-in-out infinite;
+}
+
+.wavy-pattern {
+  background: 
+    radial-gradient(circle at 25% 25%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(255, 119, 198, 0.1) 0%, transparent 50%),
+    linear-gradient(45deg, transparent 30%, rgba(120, 219, 255, 0.05) 50%, transparent 70%);
+  background-size: 100px 100px, 150px 150px, 200px 200px;
 }

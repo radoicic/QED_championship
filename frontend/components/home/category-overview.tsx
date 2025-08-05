@@ -1,117 +1,108 @@
 "use client";
 
-import { useState } from "react";
-import { useLanguage } from "@/lib/language-provider";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { MessageSquare, FileText, Beaker, Circle, AlertTriangle, Cpu } from "lucide-react";
+import {
+  MessageSquare,
+  FileText,
+  Beaker,
+  Circle,
+  AlertTriangle,
+  Cpu,
+  Info,
+} from "lucide-react";
 
 const categories = [
   {
     id: "narrative",
     icon: MessageSquare,
     title: "Narrative",
-    description: "Classic storytelling with a twist. Whether it's drama, thriller or sci-fi—If it moves us, it belongs here.",
+    description:
+      "Classic storytelling with a twist. Whether it's drama, thriller or sci-fi—If it moves us, it belongs here.",
     color: "blue",
-    glow: "category-icon-neon-blue"
+    glow: "shadow-[0_0_20px_#3b82f6] shadow-[0_0_40px_#3b82f6]",
   },
   {
     id: "documentary",
     icon: FileText,
     title: "Documentary",
-    description: "Truth raw and unfiltered. Explore the world, people, and real-life stories through your lens.",
+    description:
+      "Truth raw and unfiltered. Explore the world, people, and real-life stories through your lens.",
     color: "yellow",
-    glow: "category-icon-neon-yellow"
+    glow: "shadow-[0_0_20px_#f59e0b] shadow-[0_0_40px_#f59e0b]",
   },
   {
     id: "experimental",
     icon: Beaker,
     title: "Experimental",
-    description: "Break the rules. Play with structure, sound, or form. Surprise us with something we didn't expect.",
+    description:
+      "Break the rules. Play with structure, sound, or form. Surprise us with something we didn't expect.",
     color: "purple",
-    glow: "category-icon-neon-purple"
+    glow: "shadow-[0_0_20px_#8b5cf6] shadow-[0_0_40px_#8b5cf6]",
   },
   {
     id: "animation",
     icon: Circle,
     title: "Animation",
-    description: "From frame-by-frame to CGI wizardry—all animated techniques are welcome. Creativity has no limits.",
+    description:
+      "From frame-by-frame to CGI wizardry—all animated techniques are welcome. Creativity has no limits.",
     color: "pink",
-    glow: "category-icon-neon-pink"
+    glow: "shadow-[0_0_20px_#ec4899] shadow-[0_0_40px_#ec4899]",
   },
   {
     id: "dystopian",
     icon: AlertTriangle,
     title: "Dystopian Futures",
-    description: "Near-future chaos, digital collapse, or quiet decline—show us the world when systems fail.",
+    description:
+      "Near-future chaos, digital collapse, or quiet decline—show us the world when systems fail.",
     color: "red",
-    glow: "category-icon-neon-red"
+    glow: "shadow-[0_0_20px_#dc2626] shadow-[0_0_40px_#dc2626]",
   },
   {
     id: "ai-identity",
     icon: Cpu,
     title: "AI & Identity",
-    description: "What happens when machines dream, or when we become them? Stories about consciousness, code, and humanity.",
+    description:
+      "What happens when machines dream, or when we become them? Stories about consciousness, code, and humanity.",
     color: "green",
-    glow: "category-icon-neon-green"
-  }
+    glow: "shadow-[0_0_20px_#10b981] shadow-[0_0_40px_#10b981]",
+  },
 ];
 
 export default function CategoryOverview() {
-  const { t } = useLanguage();
-
   return (
-    <div className="py-32">
+    <div className="py-8 bg-[#0f0f1b] wavy-pattern">
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-20">
-          <h2 className="text-6xl md:text-7xl font-bold mb-8 quantum-text-glow text-white">
+        <div className="text-center mb-8">
+          <h2 className="text-6xl md:text-7xl font-bold text-white mb-4 drop-shadow-[0_0_25px_#6ee7b7]">
             Film Categories
           </h2>
         </div>
 
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {categories.map((category) => {
-              const IconComponent = category.icon;
-              return (
-                <div key={category.id} className="flex items-start space-x-4">
-                  <div className="flex-shrink-0">
-                    <div className={`p-4 rounded-full border border-${category.color}-500/30 ${category.glow}`}>
-                      <IconComponent className={`w-8 h-8 text-${category.color}-400`} />
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-white mb-3">
-                      {category.title}
-                    </h3>
-                    <p className="text-slate-300 mb-4 text-sm leading-relaxed">
-                      {category.description}
-                    </p>
-                    <Button 
-                      variant="ghost" 
-                      size="sm"
-                      className={`text-${category.color}-300 hover:text-${category.color}-200 font-medium`}
-                    >
-                      SEE CHALLENGE DETAILS
-                    </Button>
-                  </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {categories.map(({ id, icon: Icon, title, description, color, glow }) => (
+              <div
+                key={id}
+                className="bg-[#1c1c2e] rounded-xl p-6 border border-gray-800 transition duration-300 hover:scale-105"
+              >
+                <div className={`mb-5 text-${color}-400`}>
+                  <Icon className={`w-10 h-10 ${glow}`} />
                 </div>
-              );
-            })}
+                <h3 className="text-xl font-semibold text-white mb-3">{title}</h3>
+                <p className="text-slate-300 mb-5 text-sm leading-relaxed">{description}</p>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className={`text-${color}-300 hover:text-${color}-100 font-medium flex items-center gap-2`}
+                >
+                  SEE CHALLENGE DETAILS
+                  <Info className="w-4 h-4" />
+                </Button>
+              </div>
+            ))}
           </div>
         </div>
       </div>
     </div>
   );
 }
-
-// Add wavy pattern CSS
-const wavyPattern = `
-  .wavy-pattern {
-    background: 
-      radial-gradient(circle at 25% 25%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 75% 75%, rgba(255, 119, 198, 0.1) 0%, transparent 50%),
-      linear-gradient(45deg, transparent 30%, rgba(120, 219, 255, 0.05) 50%, transparent 70%);
-    background-size: 100px 100px, 150px 150px, 200px 200px;
-  }
-`;
