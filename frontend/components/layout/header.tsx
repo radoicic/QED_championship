@@ -42,74 +42,68 @@ export default function Header() {
     return (
       <header className="sticky top-0 z-50 bg-black border-b border-gray-800">
         <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            {/* Logo */}
-            <Link href="/" className="flex items-center space-x-4 group">
-              <div className="relative w-12 h-12 flex items-center justify-center">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-purple-600 rounded-lg transform rotate-45"></div>
-                <div className="relative z-10 text-white font-bold text-2xl">
-                  Q
-                </div>
-              </div>
-              <div className="flex flex-col space-y-1">
-                <span className="text-white font-bold text-xl quantum-text-glow">
-                  Quantum
-                </span>
-                <span className="text-blue-300 text-sm font-light tracking-wider">
-                  REELS & CRYPTO GALLERY
-                </span>
-              </div>
-            </Link>
+                  <div className="flex items-center justify-between">
+          {/* Logo */}
+          <Link href="/" className="flex items-center space-x-4 group ml-80 relative">
+            {/* Main Logo */}
+            <Image
+              src="/Q_logo.png"
+              alt="Q Logo"
+              width={40}
+              height={40}
+              className="w-10 h-10"
+            />
+          </Link>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-8">
-              <Link 
-                href="/" 
-                className="text-white hover:text-blue-300 transition-colors duration-200 text-base font-medium"
-              >
-                {t("nav.home")}
-              </Link>
-              <Link 
-                href="/about" 
-                className="text-white hover:text-blue-300 transition-colors duration-200 text-base font-medium"
-              >
-                About
-              </Link>
-              <Link 
-                href="/categories" 
-                className="text-white hover:text-blue-300 transition-colors duration-200 text-base font-medium"
-              >
-                Categories
-              </Link>
-              <Link 
-                href="/upload" 
-                className="text-white hover:text-blue-300 transition-colors duration-200 text-base font-medium"
-              >
-                {t("nav.submit")}
-              </Link>
-              <Link 
-                href="/videos" 
-                className="text-white hover:text-blue-300 transition-colors duration-200 text-base font-medium"
-              >
-                {t("nav.vote")}
-              </Link>
-            </nav>
+          {/* Desktop Navigation - Centered */}
+          <nav className="hidden md:flex items-center space-x-8 ml-4">
+                                                             <Link 
+                   href="/" 
+                   className="text-white hover:text-blue-300 transition-colors duration-200 text-xl font-medium"
+                 >
+                   {t("nav.home")}
+                 </Link>
+                 <Link 
+                   href="/about" 
+                   className="text-white hover:text-blue-300 transition-colors duration-200 text-xl font-medium"
+                 >
+                   About
+                 </Link>
+                 <Link 
+                   href="/categories" 
+                   className="text-white hover:text-blue-300 transition-colors duration-200 text-xl font-medium"
+                 >
+                   Categories
+                 </Link>
+                 <Link 
+                   href="/upload" 
+                   className="text-white hover:text-blue-300 transition-colors duration-200 text-xl font-medium"
+                 >
+                   {t("nav.submit")}
+                 </Link>
+                 <Link 
+                   href="/videos" 
+                   className="text-white hover:text-blue-300 transition-colors duration-200 text-xl font-medium"
+                 >
+                   {t("nav.vote")}
+                 </Link>
+          </nav>
 
-            {/* Right side - Auth and Language */}
+                      {/* Right side - Auth and Language */}
             <div className="flex items-center space-x-6">
               {/* Auth Buttons */}
               <div className="flex items-center space-x-6">
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="text-white hover:text-blue-300 hover:bg-transparent text-base font-medium px-0"
+                  className="text-white hover:text-blue-300 hover:bg-transparent text-xl font-medium px-0"
                 >
                   {t("auth.login")}
                 </Button>
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="text-white hover:text-blue-300 hover:bg-transparent text-base font-medium px-0"
+                  className="text-white hover:text-blue-300 hover:bg-transparent text-xl font-medium px-0"
                 >
                   {t("auth.register")}
                 </Button>
@@ -136,57 +130,51 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-black border-b border-gray-800">
       <div className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-4 group">
-            <div className="relative w-12 h-12 flex items-center justify-center">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-purple-600 rounded-lg transform rotate-45"></div>
-              <div className="relative z-10 text-white font-bold text-2xl">
-                Q
-              </div>
-            </div>
-            <div className="flex flex-col space-y-1">
-              <span className="text-white font-bold text-xl quantum-text-glow">
-                Quantum
-              </span>
-              <span className="text-blue-300 text-sm font-light tracking-wider">
-                REELS & CRYPTO GALLERY
-              </span>
-            </div>
+          <Link href="/" className="flex items-center space-x-4 group ml-80 relative">
+            {/* Main Logo */}
+            <Image
+              src="/Q_logo.png"
+              alt="Q Logo"
+              width={40}
+              height={40}
+              className="w-10 h-10"
+            />
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <Link 
-              href="/" 
-              className="text-white hover:text-blue-300 transition-colors duration-200 text-base font-medium"
-            >
-              {t("nav.home")}
-            </Link>
-            <Link 
-              href="/about" 
-              className="text-white hover:text-blue-300 transition-colors duration-200 text-base font-medium"
-            >
-              About
-            </Link>
-            <Link 
-              href="/categories" 
-              className="text-white hover:text-blue-300 transition-colors duration-200 text-base font-medium"
-            >
-              Categories
-            </Link>
-            <Link 
-              href="/upload" 
-              className="text-white hover:text-blue-300 transition-colors duration-200 text-base font-medium"
-            >
-              {t("nav.submit")}
-            </Link>
-            <Link 
-              href="/videos" 
-              className="text-white hover:text-blue-300 transition-colors duration-200 text-base font-medium"
-            >
-              {t("nav.vote")}
-            </Link>
+                    {/* Desktop Navigation - Centered */}
+          <nav className="hidden md:flex items-center space-x-8 ml-4">
+              <Link 
+                href="/" 
+                className="text-white hover:text-blue-300 transition-colors duration-200 text-xl font-medium"
+              >
+                {t("nav.home")}
+              </Link>
+              <Link 
+                href="/about" 
+                className="text-white hover:text-blue-300 transition-colors duration-200 text-xl font-medium"
+              >
+                About
+              </Link>
+              <Link 
+                href="/categories" 
+                className="text-white hover:text-blue-300 transition-colors duration-200 text-xl font-medium"
+              >
+                Categories
+              </Link>
+              <Link 
+                href="/upload" 
+                className="text-white hover:text-blue-300 transition-colors duration-200 text-xl font-medium"
+              >
+                {t("nav.submit")}
+              </Link>
+              <Link 
+                href="/videos" 
+                className="text-white hover:text-blue-300 transition-colors duration-200 text-xl font-medium"
+              >
+                {t("nav.vote")}
+              </Link>
           </nav>
 
           {/* Right side - Auth and Language */}
@@ -200,7 +188,7 @@ export default function Header() {
                   variant="ghost"
                   size="sm"
                   onClick={() => setIsLoginOpen(true)}
-                  className="text-white hover:text-blue-300 hover:bg-transparent text-base font-medium px-0"
+                  className="text-white hover:text-blue-300 hover:bg-transparent text-xl font-medium px-0"
                 >
                   {t("auth.login")}
                 </Button>
@@ -208,7 +196,7 @@ export default function Header() {
                   variant="ghost"
                   size="sm"
                   onClick={() => setIsRegisterOpen(true)}
-                  className="text-white hover:text-blue-300 hover:bg-transparent text-base font-medium px-0"
+                  className="text-white hover:text-blue-300 hover:bg-transparent text-xl font-medium px-0"
                 >
                   {t("auth.register")}
                 </Button>
@@ -236,35 +224,35 @@ export default function Header() {
             <nav className="flex flex-col space-y-4 pt-4">
               <Link 
                 href="/" 
-                className="text-white hover:text-blue-300 transition-colors duration-200 text-base font-medium"
+                className="text-white hover:text-blue-300 transition-colors duration-200 text-xl font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {t("nav.home")}
               </Link>
               <Link 
                 href="/about" 
-                className="text-white hover:text-blue-300 transition-colors duration-200 text-base font-medium"
+                className="text-white hover:text-blue-300 transition-colors duration-200 text-xl font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 About
               </Link>
               <Link 
                 href="/categories" 
-                className="text-white hover:text-blue-300 transition-colors duration-200 text-base font-medium"
+                className="text-white hover:text-blue-300 transition-colors duration-200 text-xl font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Categories
               </Link>
               <Link 
                 href="/upload" 
-                className="text-white hover:text-blue-300 transition-colors duration-200 text-base font-medium"
+                className="text-white hover:text-blue-300 transition-colors duration-200 text-xl font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {t("nav.submit")}
               </Link>
               <Link 
                 href="/videos" 
-                className="text-white hover:text-blue-300 transition-colors duration-200 text-base font-medium"
+                className="text-white hover:text-blue-300 transition-colors duration-200 text-xl font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {t("nav.vote")}

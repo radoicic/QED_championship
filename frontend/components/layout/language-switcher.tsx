@@ -13,7 +13,7 @@ export default function LanguageSwitcher() {
   return (
     <DropdownMenu open={open} onOpenChange={setOpen}>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="sm" className="gap-1">
+        <Button variant="ghost" size="sm" className="gap-1 text-xl">
           <Globe className="h-4 w-4" />
           <span className="uppercase">{language}</span>
         </Button>

@@ -19,7 +19,7 @@ export default function Hero() {
   const isDarkMode = mounted && (resolvedTheme === "dark" || theme === "dark");
 
   return (
-    <section className="relative w-full overflow-hidden" style={{ height: '800px' }}>
+    <section className="relative w-full overflow-hidden" style={{ height: '998px' }}>
       <div className="absolute inset-0 -z-10">
         <Image 
           src="/hero-bg.png" 
@@ -30,26 +30,25 @@ export default function Hero() {
         />
       </div>
       
-      <div className="container mx-auto px-4 text-center relative z-10 h-full flex flex-col justify-center">
+      <div className="container mx-auto px-4 text-center relative z-10 h-full flex flex-col justify-center min-h-screen">
         <div className="max-w-6xl mx-auto">
-          <div className="flex justify-center mb-16">
-            <div className="relative">
-              <div className="w-32 h-32 bg-gradient-to-br from-blue-400 to-purple-600 rounded-lg flex items-center justify-center neon-glow-blue">
-                <span className="text-6xl font-bold text-white">Q</span>
-              </div>
-              <div className="absolute -inset-4 bg-gradient-to-br from-blue-400 to-purple-600 rounded-lg blur-lg opacity-50"></div>
-            </div>
-          </div>
+          {/* Q logo removed */}
 
-          <h1 className="text-8xl md:text-9xl font-bold mb-12 quantum-text-glow">
+          <h1 className="text-7xl md:text-9xl font-bold mb-12 quantum-text-glow mt-96">
             <span className="bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
               Discover and Vote
             </span>
-            <br />
-            <span className="text-4xl md:text-5xl text-white/90 font-medium">
-              and
-            </span>
           </h1>
+
+          {/* Subtitle Text */}
+          <div className="text-center mb-16">
+            {/* <p className="text-2xl md:text-3xl text-white/80 font-medium mb-4">
+              Experience the future of filmmaking
+            </p> */}
+            <p className="text-lg md:text-xl text-white/60 font-light">
+              for the most innovtaive reel videos around the world
+            </p>
+          </div>
 
           {/* Call-to-Action Buttons */}
           <div className="flex justify-center mb-16">
