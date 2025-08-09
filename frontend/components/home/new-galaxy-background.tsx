@@ -4,7 +4,7 @@ import Image from "next/image"
 
 export default function NewGalaxyBackground() {
   return (
-    <section className="relative w-full overflow-hidden min-h-screen">
+    <section className="relative w-full overflow-y-auto" style={{ minHeight: '100vh', height: 'max(100vh, 2572px)' }}>
       {/* New Galaxy Background */}
       <div className="absolute inset-0 -z-10">
         <Image 
@@ -13,6 +13,7 @@ export default function NewGalaxyBackground() {
           fill 
           className="object-cover"
           priority
+          sizes="100vw"
         />
       </div>
       
@@ -26,7 +27,7 @@ export default function NewGalaxyBackground() {
         </div>
 
         {/* Grid Structure - Above FILM X BLOCHAIN */}
-        <div className="absolute top-8 sm:top-16 md:top-32 lg:top-48 xl:top-65 right-2 sm:right-4 md:right-8 lg:right-16 xl:right-48 z-30">
+        <div className="absolute top-[700px] sm:top-[800px] md:top-[900px] lg:top-[1000px] xl:top-[1100px] right-8 sm:right-12 md:right-16 lg:right-20 xl:right-24 z-30">
           <div className="grid grid-cols-2 gap-x-2 sm:gap-x-4 md:gap-x-8 lg:gap-x-16 xl:gap-x-32 gap-y-2 sm:gap-y-4 md:gap-y-8">
             {/* Row 1 */}
             <div className="w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 border-2 border-white rounded-lg bg-black/20 hover:bg-white/20 hover:scale-110 hover:shadow-[0_0_20px_rgba(255,255,255,0.8)] transition-all duration-300 cursor-pointer"></div>
@@ -211,7 +212,7 @@ export default function NewGalaxyBackground() {
               {/* Dark Interior Triangle */}
               <polygon 
                 points="120,0 0,240 240,240" 
-                fill="rgba(0,0,0,0.85)" 
+                fill="rgba(0,0,0,0.6)" 
                 stroke="none"
                 strokeLinejoin="round"
                 strokeLinecap="round"
@@ -225,10 +226,10 @@ export default function NewGalaxyBackground() {
                 strokeWidth="1"
                 transform="rotate(90 120 120)"
               />
-              <text x="60" y="120" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold">
-                <tspan x="60" dy="-10">Submit</tspan>
-                <tspan x="60" dy="12">Your</tspan>
-                <tspan x="60" dy="12">Film</tspan>
+              <text x="80" y="120" textAnchor="middle" fill="white" fontSize="28" fontWeight="bold">
+                <tspan x="80" dy="-18">Submit</tspan>
+                <tspan x="80" dy="28">Your</tspan>
+                <tspan x="80" dy="28">Film</tspan>
               </text>
             </svg>
             
@@ -352,9 +353,9 @@ export default function NewGalaxyBackground() {
                 strokeWidth="1"
                 transform="rotate(90 120 120)"
               />
-              <text x="60" y="120" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold">
-                <tspan x="60" dy="-10">Connect</tspan>
-                <tspan x="60" dy="12">Wallet</tspan>
+              <text x="80" y="120" textAnchor="middle" fill="white" fontSize="28" fontWeight="bold">
+                <tspan x="80" dy="-18">Connect</tspan>
+                <tspan x="80" dy="28">Wallet</tspan>
               </text>
             </svg>
             
@@ -443,7 +444,7 @@ export default function NewGalaxyBackground() {
               {/* Dark Interior Triangle */}
               <polygon 
                 points="120,0 0,240 240,240" 
-                fill="rgba(0,0,0,0.85)" 
+                fill="rgba(0,0,0,0.6)" 
                 stroke="none"
                 strokeLinejoin="round"
                 strokeLinecap="round"
@@ -457,9 +458,9 @@ export default function NewGalaxyBackground() {
                 strokeWidth="1"
                 transform="rotate(90 120 120)"
               />
-              <text x="60" y="120" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold">
-                <tspan x="60" dy="-10">Presale</tspan>
-                <tspan x="60" dy="12">Info</tspan>
+              <text x="80" y="120" textAnchor="middle" fill="white" fontSize="28" fontWeight="bold">
+                <tspan x="80" dy="-18">Presale</tspan>
+                <tspan x="80" dy="28">Info</tspan>
               </text>
             </svg>
             
@@ -497,7 +498,7 @@ export default function NewGalaxyBackground() {
         </div>
 
         {/* FILM X BLOCKCHAIN Text */}
-        <div className="absolute top-16 sm:top-32 md:top-48 lg:top-64 xl:top-80 2xl:top-[105rem] right-2 sm:right-4 md:right-8 lg:right-16 xl:right-44 transform -translate-y-1/2">
+        <div className="absolute top-8 sm:top-24 md:top-40 lg:top-56 xl:top-72 2xl:top-[105rem] right-4 sm:right-6 md:right-8 lg:right-12 xl:right-16 transform -translate-y-1/2">
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-white tracking-widest" style={{ fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
             <span>FILM</span>
             <br/> X <br/>

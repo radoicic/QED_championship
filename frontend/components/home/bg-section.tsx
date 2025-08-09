@@ -45,70 +45,70 @@ export default function BgSection() {
   const sampleVideos = [
     {
       id: 1,
-      title: "Bored?",
+      title: "MONEY HEIST",
       thumbnail: "/placeholder.jpg",
       views: "2.1M views",
       overlay: "Beach Scene"
     },
     {
       id: 2,
-      title: "World Map",
+      title: "AVENGERS ENDGAME",
       thumbnail: "/placeholder.jpg", 
       views: "1.8M views",
       overlay: "Global View"
     },
     {
       id: 3,
-      title: "Vortex",
+      title: "SQUID GAME",
       thumbnail: "/placeholder.jpg",
       views: "956K views",
       overlay: "Swirling"
     },
     {
       id: 4,
-      title: "Night Building",
+      title: "IRON MAN",
       thumbnail: "/placeholder.jpg",
       views: "1.2M views",
       overlay: "Urban"
     },
     {
       id: 5,
-      title: "Car Interior",
+      title: "ARGO",
       thumbnail: "/placeholder.jpg",
       views: "3.4M views",
       overlay: "Automotive"
     },
     {
       id: 6,
-      title: "Futuristic Vehicle",
+      title: "OPPENHEIMER",
       thumbnail: "/placeholder.jpg",
       views: "567K views",
       overlay: "Sci-Fi"
     },
     {
       id: 7,
-      title: "GANGS",
+      title: "PARASITE",
       thumbnail: "/placeholder.jpg",
       views: "789K views",
       overlay: "Action"
     },
     {
       id: 8,
-      title: "The internet made the world smaller...",
+      title: "INTERSTELLAR",
       thumbnail: "/placeholder.jpg",
       views: "1.5M views",
       overlay: "Technology"
     },
     {
       id: 9,
-      title: "Elon internet is mine. Biology ok.",
+      title: "The ARTIST",
       thumbnail: "/placeholder.jpg",
       views: "2.3M views",
       overlay: "Elon Musk"
     },
     {
       id: 10,
-      title: "Tech Speed",
+      title: "AVATAR",
       thumbnail: "/placeholder.jpg",
       views: "12 views",
       overlay: "Tech Speed"
