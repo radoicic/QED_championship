@@ -22,11 +22,15 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  experimental: {
-    webpackBuildWorker: true,
-    parallelServerBuildTraces: true,
-    parallelServerCompiles: true,
-  },
+  // Remove experimental features that might cause deployment issues
+  // experimental: {
+  //   webpackBuildWorker: true,
+  //   parallelServerBuildTraces: true,
+  //   parallelServerCompiles: true,
+  // },
+  // Add proper output configuration for Vercel
+  output: 'standalone',
+  trailingSlash: false,
 }
 
 if (userConfig) {
