@@ -1,22 +1,23 @@
 "use client";
 
-import type React from "react";
-
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Film } from "lucide-react";
-import { useLanguage } from "@/lib/language-provider";
 import Image from "next/image";
+import { useLanguage } from "@/lib/language-provider";
 
 export default function Footer() {
   const { t } = useLanguage();
+  const [isClient, setIsClient] = useState(false);
 
-  const currentYear = new Date().getFullYear();
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
-  const handleNavClick = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    href: string
-  ) => {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
+
+    // Only run on client side
+    if (!isClient) return;
 
     // Extract the section ID from the href
     const sectionId = href.includes("#") ? href.split("#")[1] : null;
@@ -34,13 +35,15 @@ export default function Footer() {
   };
 
   const scrollToSection = (sectionId: string) => {
-    if (typeof document !== "undefined") {
-      const section = document.getElementById(sectionId);
-      if (section) {
-        section.scrollIntoView({ behavior: "smooth" });
-      }
+    if (!isClient || typeof document === "undefined") return;
+    
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="relative w-full border-t overflow-hidden h-[632px]">
